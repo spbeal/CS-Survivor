@@ -1,0 +1,2 @@
+# Git - 2024.09.17
+https://vandalsuidaho-my.sharepoint.com/personal/habe6943_vandals_uidaho_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2Fhabe6943%5Fvandals%5Fuidaho%5Fedu%2FDocuments%2Fvideo1846279543%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ead3c3d1b%2Ddfbd%2D4ab8%2D9099%2D04e881166862
