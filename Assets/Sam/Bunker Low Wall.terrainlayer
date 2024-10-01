@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bunker Low Wall
-  m_DiffuseTexture: {fileID: 2800000, guid: 43a2658eb68280b40b46b0ee515e369e, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 034303843f6d0bf4d9385be5b6ecad1c, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}
