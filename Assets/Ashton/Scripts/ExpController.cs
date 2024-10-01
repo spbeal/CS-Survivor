@@ -24,13 +24,15 @@ public class ExpController : MonoBehaviour
     }
 
     public void SpawnExp(Vector3 position) {
-        Instantiate(pickup, position, Quaternion.identity);
+        Instantiate(pickup, position + new Vector3((Random.value-0.5f)*2, (Random.value-0.5f)*2, (Random.value-0.5f)*2), Quaternion.identity);
 
         // TODO: inside the enemy controller:
         //
         //  if (enemy dies) {
         //      ExpController.instance.SpawnExp(transform.position);
         //  }
+
+        // TODO: add a despawn timer.
 
     }
 
