@@ -29,7 +29,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;        //CHECK FOR PLAYER OBJECT REFERENCE!!!!!!!!
+        player = GameObject.Find("Player").transform;        //CHECK FOR PLAYER OBJECT REFERENCE!!!!!!!!
         agent = GetComponent<NavMeshAgent>();
     }
 

@@ -21,6 +21,7 @@ public class ExpController : MonoBehaviour
     // methods
     public void GetExp(int amountToGet) {
         currentExp += amountToGet;
+        Debug.Log(currentExp);
     }
 
     public void SpawnExp(Vector3 position) {
