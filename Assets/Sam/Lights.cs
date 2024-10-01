@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Lights : MonoBehaviour
 {
+    // Initalize vars
     Light myLight;
     float duration = 1.0f;
     Color red = Color.red;
@@ -14,26 +15,25 @@ public class Lights : MonoBehaviour
     Color white = Color.white;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         myLight = GetComponent<Light>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        // Light on off
         if (Input.GetKeyUp(KeyCode.L))
         {
             myLight.enabled = !myLight.enabled;
         }
 
+        // Flashing light based on time
         float t = Mathf.PingPong(Time.time, duration) / duration;
+        myLight.color = Color.Lerp(red, blue, t);
         //myLight.color = Color.Lerp(red, blue, t);
         //myLight.color = Color.Lerp(Lerp(green, Lerp(yellow, white)), Lerp(red, Lerp(blue, black)), t);
-        myLight.color = Color.Lerp(red, blue, t);
-/*        myLight.color = Color.Lerp(green, white, t);
-        myLight.color = Color.Lerp(black, yellow, t);*/
+        //myLight.color = Color.Lerp(green, white, t);
+        //myLight.color = Color.Lerp(black, yellow, t);
     }
 }
