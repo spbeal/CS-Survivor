@@ -4,24 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Map
+  - Enemy
   - Water
   - UI
-<<<<<<< Updated upstream
-  - exp
-=======
+  - Ground
   - Player
->>>>>>> Stashed changes
   - 
   - 
   - 
-  - Grass
   - 
   - 
   - 
