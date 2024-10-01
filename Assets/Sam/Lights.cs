@@ -8,6 +8,10 @@ public class Lights : MonoBehaviour
     float duration = 1.0f;
     Color red = Color.red;
     Color blue = Color.blue;
+    Color green = Color.green;
+    Color black = Color.black;
+    Color yellow = Color.yellow;
+    Color white = Color.white;
 
 
     // Start is called before the first frame update
@@ -25,8 +29,11 @@ public class Lights : MonoBehaviour
             myLight.enabled = !myLight.enabled;
         }
 
-            float t = Mathf.PingPong(Time.time, duration) / duration;
-            myLight.color = Color.Lerp(red, blue, t);
-        
+        float t = Mathf.PingPong(Time.time, duration) / duration;
+        //myLight.color = Color.Lerp(red, blue, t);
+        //myLight.color = Color.Lerp(Lerp(green, Lerp(yellow, white)), Lerp(red, Lerp(blue, black)), t);
+        myLight.color = Color.Lerp(red, blue, t);
+/*        myLight.color = Color.Lerp(green, white, t);
+        myLight.color = Color.Lerp(black, yellow, t);*/
     }
 }
