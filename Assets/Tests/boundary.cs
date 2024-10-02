@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class Test_test
+public class boundary
 {
     // A Test behaves as an ordinary method
     [Test]
