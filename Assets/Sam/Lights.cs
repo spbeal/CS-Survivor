@@ -5,14 +5,14 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     // Initalize vars
-    Light myLight;
-    float duration = 1.0f;
-    Color red = Color.red;
-    Color blue = Color.blue;
-    Color green = Color.green;
-    Color black = Color.black;
-    Color yellow = Color.yellow;
-    Color white = Color.white;
+    private Light myLight;
+    public float duration = 1.0f;
+    private Color red = Color.red;
+    private Color blue = Color.blue;
+    private Color green = Color.green;
+    private Color black = Color.black;
+    private Color yellow = Color.yellow;
+    private Color white = Color.white;
 
 
     void Start()
