@@ -38,13 +38,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    void PauseGame(){
+    public void PauseGame(){
         Time.timeScale = 0;
         PauseMenuObject.SetActive(true);
         Debug.Log("paused");
     }
 
-    void ResumeGame(){
+    public void ResumeGame(){
         Time.timeScale = 1;
         PauseMenuObject.SetActive(false);
         Debug.Log("resumed");

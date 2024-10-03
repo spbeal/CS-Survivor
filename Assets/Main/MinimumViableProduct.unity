@@ -613,6 +613,7 @@ MonoBehaviour:
   walkSpeed: 10
   lookSpeed: 7
   lookYLimit: 100
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!143 &1107969142
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1113,7 +1114,7 @@ GameObject:
   - component: {fileID: 1325714093}
   m_Layer: 6
   m_Name: Terrain
-  m_TagString: Ground
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

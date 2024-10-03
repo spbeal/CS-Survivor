@@ -11,9 +11,11 @@ public class Movement : MonoBehaviour
 	// and their look Y limit
 	[SerializeField]
 	private Camera playerCamera;
-	
-	[SerializeField]
-	private float walkSpeed = 10f;
+
+
+    [SerializeField]
+	public float walkSpeed = 10f;
+	//Me change this to public
 	
 	[SerializeField]
 	private float lookSpeed = 7f;
@@ -22,9 +24,10 @@ public class Movement : MonoBehaviour
 	private float lookYLimit = 100f;
 	
 	// Vector tracking movement direction
-	Vector3 moveDirection = Vector3.zero;
-	
-	float rotationX = 0;
+	public Vector3 moveDirection = Vector3.zero;
+    //Me change this to public
+
+    float rotationX = 0;
 	
 	// The required CharacterController object
 	CharacterController characterController;
