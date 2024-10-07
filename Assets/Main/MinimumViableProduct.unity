@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 1325714094}
   - component: {fileID: 1325714093}
   m_Layer: 6
-  m_Name: Terrain
+  m_Name: MainTerrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
