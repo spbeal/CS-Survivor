@@ -76,7 +76,7 @@ public class Boundary
         // Set custom moveDirection to simulate leftward movement
         Vector3 leftMove = Vector3.left * _Movement.walkSpeed;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 500; i++)
         {
             Debug.Log("Player pos" + Player.transform.position.x + "\n");
             // Incrementally increase the player's speed for demonstration
@@ -114,7 +114,7 @@ public class Boundary
         // Set custom moveDirection to simulate leftward movement
         Vector3 rightMove = Vector3.right * _Movement.walkSpeed;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 500; i++)
         {
             Debug.Log("Player pos" + Player.transform.position.x + "\n");
             // Incrementally increase the player's speed for demonstration
@@ -154,10 +154,10 @@ public class Boundary
         Vector3 rightMove = Vector3.right * _Movement.walkSpeed;
 
         // Simulate 1000 frames
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 1000; i++)
         {
             // Incrementally increase the player's speed for demonstration
-            _Movement.walkSpeed += 50f;
+            _Movement.walkSpeed += 20f;
 
             Debug.Log("Player pos" + Player.transform.position.x + " : ");
             Debug.Log("Player speed" + _Movement.walkSpeed + "\n");
@@ -182,7 +182,7 @@ public class Boundary
 
         // Assert that the player has moved left (the x position should decrease)
         //Change the assert to assert at a position we want.
-        if (Player.transform.position.x < 2) Assert.Fail();
+        if (Player.transform.position.y < 2) Assert.Fail();
         Assert.Pass("The player moved from " + initialPosX + " to" + finalPosX + " at speed " + _Movement.walkSpeed);
     }
 

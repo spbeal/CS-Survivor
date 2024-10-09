@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
 
-public class InitialTests
+public class InitialTest
 {
     private bool sceneLoaded;
 
@@ -60,8 +60,7 @@ public class InitialTests
 
 		delayTime = delayTime / 2;
 	}
-
-	Assert.Pass(delayTime) // idk it worked ???
+        //Assert.Pass(delayTime); // idk it worked ???
 
 
     }
