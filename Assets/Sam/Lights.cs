@@ -5,24 +5,21 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     // Initalize vars
-    private Light myLight;
+    //private Light myLight;
     public float duration = 1.0f;
-    private Color red = Color.red;
-    private Color blue = Color.blue;
-    private Color green = Color.green;
-    private Color black = Color.black;
-    private Color yellow = Color.yellow;
-    private Color white = Color.white;
-
+    private LightSystem a;
 
     void Start()
     {
-        myLight = GetComponent<Light>();
+        //myLight = GetComponent<Light>();
+        a = new LightSystem();
+        a.Init();
     }
 
     void Update()
     {
-        // Light on off
+        a.Draw();
+/*      // Light on off
         if (Input.GetKeyUp(KeyCode.L))
         {
             myLight.enabled = !myLight.enabled;
@@ -30,13 +27,9 @@ public class Lights : MonoBehaviour
 
         // Flashing light based on time
         float t = Mathf.PingPong(Time.time, duration) / duration;
-        myLight.color = Color.Lerp(red, blue, t);
-        //myLight.color = Color.Lerp(red, blue, t);
-        //myLight.color = Color.Lerp(Lerp(green, Lerp(yellow, white)), Lerp(red, Lerp(blue, black)), t);
-        //myLight.color = Color.Lerp(green, white, t);
-        //myLight.color = Color.Lerp(black, yellow, t);
+        myLight.color = Color.Lerp(Color.red, Color.blue, t);
 
-
+*/
     }
 }
 
@@ -45,80 +38,76 @@ public class Lights : MonoBehaviour
 public class LightSystem
 {
     // Start is called before the first frame update
-/*    LightSystem()
+    public LightSystem()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            WhiteLight a = new WhiteLight();
-        }
-        for (int i = 0; i < 10; i++)
-        {
-            ColorLight a = new ColorLight();
-        }
-    }*/
 
+    }
+    public void Init()
+    {
+        // four corners
+        WhiteLight corner1 = new WhiteLight(16, 5, 16);
+        WhiteLight corner2 = new WhiteLight(16, 5, -16);
+        WhiteLight corner3 = new WhiteLight(-16, 5, 16);
+        WhiteLight corner4 = new WhiteLight(-16, 5, -16);
+
+        // four sectors
+        ColorLight sector1 = new ColorLight(10, 4, 10, Color.red);
+        ColorLight sector2 = new ColorLight(10, 4, -10, Color.red);
+        ColorLight sector3 = new ColorLight(-10, 4, 10, Color.red);
+        ColorLight sector4 = new ColorLight(-10, 4, -10, Color.red);
+    }
+    public void Draw()
+    {
+
+    }
 }
 
 public class ColorLight : LightSystem
 {
-    ColorLight()
+    public ColorLight()
     {
-        // Make a game object
         GameObject lightGameObject = new GameObject("ColorLight");
-
-        // Add the light component
         Light lightComp = lightGameObject.AddComponent<Light>();
 
-        // Set color and position
-        lightComp.color = Color.red;
+        lightComp.color = Color.red ;
 
-        // Set the position (or any transform property)
-        lightGameObject.transform.position = new Vector3(0,0,0);
+        lightGameObject.transform.position = new Vector3(0, 0, 0);
     }
-    ColorLight(int x, int y, int z, Color color)
+    public ColorLight(int x, int y, int z, Color color)
     {
-        // Make a game object
         GameObject lightGameObject = new GameObject("ColorLight");
-
-        // Add the light component
         Light lightComp = lightGameObject.AddComponent<Light>();
 
-        // Set color and position
+        // Set parameters
         lightComp.color = color;
+        lightComp.type = LightType.Point;
+        lightComp.range = 40;
 
-        // Set the position (or any transform property)
         lightGameObject.transform.position = new Vector3(x, y, z);
     }
 }
 
 public class WhiteLight : LightSystem
 {
-    WhiteLight()
+    public WhiteLight()
     {
-        // Make a game object
         GameObject lightGameObject = new GameObject("WhiteLight");
-
-        // Add the light component
         Light lightComp = lightGameObject.AddComponent<Light>();
 
-        // Set color and position
         lightComp.color = Color.white;
 
-        // Set the position (or any transform property)
         lightGameObject.transform.position = new Vector3(0,0,0);
     }
-    WhiteLight(int x, int y, int z)
+    public WhiteLight(int x, int y, int z)
     {
-        // Make a game object
         GameObject lightGameObject = new GameObject("WhiteLight");
-
-        // Add the light component
         Light lightComp = lightGameObject.AddComponent<Light>();
 
-        // Set color and position
+        // Set parameters
         lightComp.color = Color.white;
+        lightComp.type = LightType.Point;
+        lightComp.range = 40;
 
-        // Set the position (or any transform property)
         lightGameObject.transform.position = new Vector3(x, y, z);
     }
 }
