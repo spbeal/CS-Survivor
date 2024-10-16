@@ -5,46 +5,68 @@
 public class GunSystem : MonoBehaviour
 {
     //Gun stats
-    public int damage;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
-    public bool allowButtonHold;
+    [SerializeField]
+    private int damage = 10;
+    [SerializeField]
+    private float timeBetweenShooting = 1.0f, spread = 0.1f, range = 100.0f, reloadTime = 2.0f, timeBetweenShots = 1.0f;
+    [SerializeField]
+    private int magazineSize = 10, bulletsPerTap = 1;
+    [SerializeField]
+    private bool allowButtonHold = true;
     private int bulletsLeft, bulletsShot;
 
-    //bools 
+    //bools to check during the firing process
     private bool shooting, readyToShoot, reloading;
 
     //Reference
-    public Camera fpsCam;
-    public Transform attackPoint;
-    public RaycastHit rayHit;
-    public LayerMask whatIsEnemy;
+    [SerializeField]
+    private Camera fpsCam;
+    [SerializeField]
+    private Transform attackPoint;
+    [SerializeField]
+    private RaycastHit rayHit;
+    [SerializeField]
+    private LayerMask whatIsEnemy;
 
     //Graphics
-    public GameObject muzzleFlash;
+    [SerializeField]
+    private GameObject muzzleFlash;
 
-    private void Awake()
+    void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
-    private void Update()
+
+    void Update()
     {
         MyInput();
     }
+
     private void MyInput()
     {
-        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        if (allowButtonHold) 
+        {
+            shooting = Input.GetKey(KeyCode.Mouse0);
+        } 
+        else 
+        {
+            shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        {
+            Reload();
+        }
 
         //Shoot
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0){
+        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        {
             bulletsShot = bulletsPerTap;
             Shoot();
         }
     }
+
     private void Shoot()
     {
         readyToShoot = false;
@@ -62,8 +84,9 @@ public class GunSystem : MonoBehaviour
             Debug.Log(rayHit.collider.name);
             
             if (rayHit.collider.CompareTag("Enemy"))
+            {
                 rayHit.collider.gameObject.GetComponent<NewBehaviourScript>().TakeDamage(damage);
-    
+            }
         }
 
         //Graphics
@@ -75,17 +98,22 @@ public class GunSystem : MonoBehaviour
         Invoke("ResetShot", timeBetweenShooting);
 
         if(bulletsShot > 0 && bulletsLeft > 0)
-        Invoke("Shoot", timeBetweenShots);
+        {
+            Invoke("Shoot", timeBetweenShots);
+        }
     }
+
     private void ResetShot()
     {
         readyToShoot = true;
     }
+
     private void Reload()
     {
         reloading = true;
         Invoke("ReloadFinished", reloadTime);
     }
+
     private void ReloadFinished()
     {
         bulletsLeft = magazineSize;
