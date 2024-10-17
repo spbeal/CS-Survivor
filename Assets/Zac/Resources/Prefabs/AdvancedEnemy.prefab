@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1652981108818464913}
   m_Layer: 0
   m_Name: AdvancedEnemy
-  m_TagString: Enemy
+  m_TagString: AdvancedEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Ground
   - Terrain
+  - BasicEnemy
+  - AdvancedEnemy
   layers:
   - Default
   - TransparentFX
