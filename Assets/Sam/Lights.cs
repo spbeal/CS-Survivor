@@ -5,8 +5,6 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     // Initalize vars
-    //private Light myLight;
-    public float duration = 1.0f;
     private LightSystem a;
 
     void Start()
