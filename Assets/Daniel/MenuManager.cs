@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PauseGame(); // game starts paused
+        //PauseGame(); // game starts paused
         //SkillMenuObject.SetActive(false);
         //ItemMenuObject.SetActive(false);
         Debug.Log("hi chat");
