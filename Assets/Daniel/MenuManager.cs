@@ -21,6 +21,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         //PauseGame(); // game starts paused
+        ResumeGame(); // game starts UNPAUSED and the dog hides
         //SkillMenuObject.SetActive(false);
         //ItemMenuObject.SetActive(false);
         Debug.Log("hi chat");
