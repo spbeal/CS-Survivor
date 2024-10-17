@@ -12,9 +12,6 @@ public class Boundary
     private Movement playerMovement;
     private GameObject terrainObject;
 
-/*    private var Player;
-    private var _Movement;*/
-
     private bool sceneLoaded;
 
     [OneTimeSetUp]
@@ -162,12 +159,4 @@ public class Boundary
 
         Assert.Fail("The stress test failed to break the game");
     }
-
-    // Optional
-/*    [TearDown]
-    public void Teardown()
-    {
-        GameObject.Destroy(playerObject);
-        GameObject.Destroy(terrainObject);
-    }*/
 }
