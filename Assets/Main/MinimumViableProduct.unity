@@ -263,7 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d7f345e54c241448cfe015d6a7dd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
 --- !u!114 &428210769 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6903426535631867737, guid: 82b3af3e62a1ac3a388d4eb8823a4c27, type: 3}
@@ -336,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 865881790}
   - component: {fileID: 865881789}
+  - component: {fileID: 865881791}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -420,6 +420,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &865881791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865881787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f685b93b885f8dc4a80ecf55c08422b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!1 &1101690486
 GameObject:
   m_ObjectHideFlags: 0
