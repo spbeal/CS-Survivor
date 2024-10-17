@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 //Switch between scenes is a great stress test
 
-public class Boundary
+public class SamTests
 {
     private GameObject playerObject;
     private Movement playerMovement;
