@@ -35,7 +35,6 @@ public class Lights : MonoBehaviour
 
 public class LightSystem
 {
-    // Start is called before the first frame update
     public LightSystem()
     {
 
@@ -49,10 +48,10 @@ public class LightSystem
         WhiteLight corner4 = new WhiteLight(-16, 5, -16);
 
         // four sectors
-        ColorLight sector1 = new ColorLight(10, 4, 10, Color.red);
-        ColorLight sector2 = new ColorLight(10, 4, -10, Color.red);
-        ColorLight sector3 = new ColorLight(-10, 4, 10, Color.red);
-        ColorLight sector4 = new ColorLight(-10, 4, -10, Color.red);
+        SingleLight sector1 = new ColorLight(10, 4, 10, Color.red);
+        SingleLight sector2 = new ColorLight(10, 4, -10, Color.red);
+        SingleLight sector3 = new ColorLight(-10, 4, 10, Color.red);
+        SingleLight sector4 = new ColorLight(-10, 4, -10, Color.red);
     }
     public void Draw()
     {
@@ -60,12 +59,19 @@ public class LightSystem
     }
 }
 
-public class ColorLight : LightSystem
+public class SingleLight
+{
+    public GameObject lightGameObject;
+    public Light lightComp;
+    //virtual lightComp.type = LightType.Point;
+}
+
+public class ColorLight : SingleLight
 {
     public ColorLight()
     {
-        GameObject lightGameObject = new GameObject("ColorLight");
-        Light lightComp = lightGameObject.AddComponent<Light>();
+        lightGameObject = new GameObject("ColorLight");
+        lightComp = lightGameObject.AddComponent<Light>();
 
         lightComp.color = Color.red ;
 
@@ -73,8 +79,8 @@ public class ColorLight : LightSystem
     }
     public ColorLight(int x, int y, int z, Color color)
     {
-        GameObject lightGameObject = new GameObject("ColorLight");
-        Light lightComp = lightGameObject.AddComponent<Light>();
+        lightGameObject = new GameObject("ColorLight");
+        lightComp = lightGameObject.AddComponent<Light>();
 
         // Set parameters
         lightComp.color = color;
