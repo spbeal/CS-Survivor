@@ -1453,6 +1453,7 @@ MonoBehaviour:
   magazineSize: 10
   bulletsPerTap: 1
   allowButtonHold: 1
+  bulletsLeft: 0
   fpsCam: {fileID: 1505145865}
   attackPoint: {fileID: 1114997924}
   whatIsEnemy:
@@ -1494,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8c7e480aa9077742a375b7b356d9e92, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.63
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8c7e480aa9077742a375b7b356d9e92, type: 3}
       propertyPath: m_LocalRotation.w
