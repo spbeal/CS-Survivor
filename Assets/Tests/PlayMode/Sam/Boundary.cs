@@ -65,22 +65,16 @@ public class Boundary
     {
         yield return new WaitWhile(() => sceneLoaded == false);
         // Wait for the scene to load (if applicable, not needed here)
-        //yield return new WaitForEndOfFrame();
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
         var _Movement = GameObject.Find("Player").GetComponent<Movement>();
 
-        // Get the initial position of the player
         float initialPosX = Player.transform.position.x;
 
-        // Set custom moveDirection to simulate leftward movement
         Vector3 leftMove = Vector3.left * _Movement.walkSpeed;
 
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 5000; i++)
         {
-            Debug.Log("Player pos" + Player.transform.position.x + "\n");
-            // Incrementally increase the player's speed for demonstration
-            _Movement.walkSpeed += 0.1f;
 
             // Move player to the left with the updated speed
             leftMove = Vector3.left * _Movement.walkSpeed;
@@ -89,13 +83,12 @@ public class Boundary
             yield return null; // Wait for the next frame
         }
 
-        // Get the final position of the player
         float finalPosX = Player.transform.position.x;
 
         // Assert that the player has moved left (the x position should decrease)
-        if (finalPosX > 380)
+        if (finalPosX < -18)
             Assert.Fail("The player did not move left as expected.");
-        Assert.Pass("The player did move left as expected.");
+        Assert.Pass("The player did move left as expected. " + finalPosX);
     }
 
     [UnityTest]
@@ -108,17 +101,12 @@ public class Boundary
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
         var _Movement = GameObject.Find("Player").GetComponent<Movement>();
 
-        // Get the initial position of the player
         float initialPosX = Player.transform.position.x;
 
-        // Set custom moveDirection to simulate leftward movement
         Vector3 rightMove = Vector3.right * _Movement.walkSpeed;
 
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 5000; i++)
         {
-            Debug.Log("Player pos" + Player.transform.position.x + "\n");
-            // Incrementally increase the player's speed for demonstration
-            _Movement.walkSpeed += 0.1f;
 
             // Move player to the left with the updated speed
             rightMove = Vector3.right * _Movement.walkSpeed;
@@ -131,9 +119,9 @@ public class Boundary
         float finalPosX = Player.transform.position.x;
 
         // Assert that the player has moved left (the x position should decrease)
-        if (finalPosX > 89500)
+        if (finalPosX > 18)
             Assert.Fail("The player did not move left as expected.");
-        Assert.Pass("The player did move left as expected.");
+        Assert.Pass("The player did move left as expected. Position: " + finalPosX);
     }
 
     [UnityTest]
@@ -148,42 +136,31 @@ public class Boundary
 
         // Get the initial position of the player
         float initialPosX = Player.transform.position.x;
+        float finalPosX = 0;
 
         // Set custom moveDirection to simulate leftward movement
         Vector3 leftMove = Vector3.left * _Movement.walkSpeed;
         Vector3 rightMove = Vector3.right * _Movement.walkSpeed;
 
-        // Simulate 1000 frames
-        for (int i = 0; i < 1000; i++)
+        // Simulate 10000 frames
+        for (int i = 0; i < 10000; i++)
         {
-            // Incrementally increase the player's speed for demonstration
-            _Movement.walkSpeed += 20f;
+            _Movement.walkSpeed += 2f;
 
-            Debug.Log("Player pos" + Player.transform.position.x + " : ");
-            Debug.Log("Player speed" + _Movement.walkSpeed + "\n");
 
-            // Move player with updated speed
-            if (i % 2 == 0)
-            {
-                leftMove = Vector3.left * _Movement.walkSpeed;
-                Player.Move(leftMove * Time.deltaTime);
-            }
-            else
-            {
-                rightMove = Vector3.right * _Movement.walkSpeed;
-                Player.Move(rightMove * Time.deltaTime);
-            }
+            // Move player with updated speed to the left
+            leftMove = Vector3.left * _Movement.walkSpeed;
+            Player.Move(leftMove * Time.deltaTime);
+
+
+            finalPosX = Player.transform.position.x;
+            if (finalPosX < -20) // boundary
+                Assert.Pass("The player moved from " + initialPosX + " to" + finalPosX + " at speed " + _Movement.walkSpeed);
 
             yield return null; // Wait for the next frame
         }
 
-        // Get the final position of the player
-        float finalPosX = Player.transform.position.x;
-
-        // Assert that the player has moved left (the x position should decrease)
-        //Change the assert to assert at a position we want.
-        if (Player.transform.position.y < 2) Assert.Fail();
-        Assert.Pass("The player moved from " + initialPosX + " to" + finalPosX + " at speed " + _Movement.walkSpeed);
+        Assert.Fail("The stress test failed to break the game");
     }
 
     // Optional
