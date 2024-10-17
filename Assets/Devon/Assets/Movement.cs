@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour
 	[SerializeField]
 	private Camera playerCamera;
 
-
     [SerializeField]
 	public float walkSpeed = 10f;
 	//Me change this to public
@@ -27,10 +26,15 @@ public class Movement : MonoBehaviour
 	public Vector3 moveDirection = Vector3.zero;
     //Me change this to public
 
-    float rotationX = 0;
+    private float rotationX = 0;
 	
 	// The required CharacterController object
 	CharacterController characterController;
+	
+	private float vSpeed = 0; // Vertical velocity
+	
+	[SerializeField]
+	private float gravity = 9.81f;
 	
     // Start is called before the first frame update
     void Start()
@@ -53,14 +57,19 @@ public class Movement : MonoBehaviour
 		
 		moveDirection = (forward * speedX) + (right * speedY);
 		
-		characterController.Move(moveDirection * Time.deltaTime);
-		
 		// Sets up camera movement
 		rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
 		rotationX = Mathf.Clamp(rotationX, -lookYLimit, lookYLimit);
 		
 		playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-		
 		transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-    }
+		
+		// Sets up gravity
+		if (characterController.isGrounded){
+			vSpeed = 0;
+		}
+		vSpeed -= gravity * Time.deltaTime;
+		moveDirection.y = vSpeed;
+		characterController.Move(moveDirection * Time.deltaTime);
+	}
 }
