@@ -144,7 +144,6 @@ public class Boundary
         {
             _Movement.walkSpeed += 2f;
 
-
             // Move player with updated speed to the left
             leftMove = Vector3.left * _Movement.walkSpeed;
             Player.Move(leftMove * Time.deltaTime);
