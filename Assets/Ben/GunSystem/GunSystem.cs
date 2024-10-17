@@ -8,12 +8,13 @@ public class GunSystem : MonoBehaviour
     [SerializeField]
     private int damage = 10;
     [SerializeField]
-    private float timeBetweenShooting = 1.0f, spread = 0.1f, range = 100.0f, reloadTime = 2.0f, timeBetweenShots = 1.0f;
-    [SerializeField]
-    private int magazineSize = 10, bulletsPerTap = 1;
+    private float timeBetweenShooting = 1.0f, spread = 0.1f, range = 100.0f, timeBetweenShots = 1.0f;
+    public float reloadTime = 2.0f;
+    public int magazineSize = 10, bulletsPerTap = 1;
     [SerializeField]
     private bool allowButtonHold = true;
-    private int bulletsLeft, bulletsShot;
+    private int bulletsShot;
+    public int bulletsLeft;
 
     //bools to check during the firing process
     private bool shooting, readyToShoot, reloading;
@@ -67,7 +68,7 @@ public class GunSystem : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         readyToShoot = false;
 
@@ -108,7 +109,7 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-    private void Reload()
+    public void Reload()
     {
         reloading = true;
         Invoke("ReloadFinished", reloadTime);

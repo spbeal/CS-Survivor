@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 1672980297}
   - component: {fileID: 1672980296}
   m_Layer: 0
-  m_Name: ManuManager
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1448,8 +1448,8 @@ MonoBehaviour:
   timeBetweenShooting: 0.1
   spread: 0.01
   range: 50
-  reloadTime: 1
   timeBetweenShots: 0.5
+  reloadTime: 1
   magazineSize: 10
   bulletsPerTap: 1
   allowButtonHold: 1
@@ -1494,7 +1494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8c7e480aa9077742a375b7b356d9e92, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.87
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8c7e480aa9077742a375b7b356d9e92, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1570,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e8c7e480aa9077742a375b7b356d9e92, type: 3}
       propertyPath: m_Name
-      value: untitled
+      value: FunnyMan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
