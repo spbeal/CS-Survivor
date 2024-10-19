@@ -4,14 +4,15 @@ using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
-public class BoundarySightRangeTest
+public class ZacUnityTesting
 {
     private const float expectedSightRange = 10f; // Adjust as needed
     private bool sceneLoaded;
 
-    [OneTimeSetUp]
-    public void OneTimeSetup()
+    [SetUp]
+    public void Setup()
     {
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         SceneManager.LoadScene("Zac/ZacTesting", LoadSceneMode.Single);
@@ -114,12 +115,16 @@ public class StressTestEnemySpawning
     private Transform spawnPoint;
     private const int enemyCount = 100; // Number of enemies to spawn
     private const float spawnInterval = 0.1f; // Time between spawns
+    private List<GameObject> spawnedEnemies;
 
-    [OneTimeSetUp]
+    [SetUp]
     public void Setup()
     {
         enemyFactory = new EnemyFactory();
-        spawnPoint = GameObject.Find("SpawnPoint1").transform; // Adjust to your spawn point name
+        spawnedEnemies = new List<GameObject>();
+        GameObject spawnPointObject = GameObject.Find("SpawnPoint1");
+        Assert.IsNotNull(spawnPointObject, "SpawnPoint1 not found!");
+        spawnPoint = spawnPointObject.transform;
     }
 
     [UnityTest]
@@ -127,20 +132,22 @@ public class StressTestEnemySpawning
     {
         for (int i = 0; i < enemyCount; i++)
         {
-            IEnemy enemy = enemyFactory.CreateEnemy("BasicEnemy"); // or "advancedEnemy" as needed
-            enemy.Spawn(spawnPoint.position); // Spawn enemy
+            IEnemy enemy = enemyFactory.CreateEnemy("BasicEnemy");
+            enemy.Spawn(spawnPoint.position);
+
+            // Add spawned enemy to the list
+            spawnedEnemies.Add(enemy.GameObject);
 
             // Wait for the specified interval before spawning the next enemy
             yield return new WaitForSeconds(spawnInterval);
         }
 
-        // Wait a bit longer to allow all enemies to be instantiated
-        yield return new WaitForSeconds(1f);
+        // Wait a bit longer to ensure all enemies are instantiated
+        yield return new WaitForSeconds(2f);
 
         // Check that the number of spawned enemies is as expected
-        int actualCount = GameObject.FindGameObjectsWithTag("BasicEnemy").Length; // Ensure this matches your tag
-        Assert.AreEqual(enemyCount, actualCount, "Not all enemies were spawned!");
+        Assert.AreEqual(enemyCount, spawnedEnemies.Count, "Not all enemies were spawned!");
 
-        Debug.Log($"{actualCount} enemies spawned successfully.");
+        Debug.Log($"{spawnedEnemies.Count} enemies spawned successfully.");
     }
 }
