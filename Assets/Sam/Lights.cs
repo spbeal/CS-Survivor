@@ -64,6 +64,9 @@ public class SingleLight
     public GameObject lightGameObject;
     public Light lightComp;
     //virtual lightComp.type = LightType.Point;
+    // Virtual void apply() and other functions to change type, range, color and such by default,
+    // but it gets overriden and changed in our subclasses. Instead of ColorLight having a constructor, 
+    // Have it use the virtual function and override it. 
 }
 
 public class ColorLight : SingleLight
