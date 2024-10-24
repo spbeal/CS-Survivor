@@ -46,7 +46,7 @@ public class ZacUnityTesting
         Assert.IsNotNull(spawnedEnemy, "BasicEnemy was not found after spawning.");
 
         // Access the EnemyBehavior component to test sight range
-        NewBehaviourScript enemyBehavior = spawnedEnemy.GetComponent<NewBehaviourScript>();
+        EnemyBehavior enemyBehavior = spawnedEnemy.GetComponent<EnemyBehavior>();
         Assert.IsNotNull(enemyBehavior, "EnemyBehavior component not found!");
 
         // Set sight range to a very low value and test
