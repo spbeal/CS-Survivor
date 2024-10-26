@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour
 	private float lookYLimit = 100f;
 	
 	// Vector tracking movement direction
+	[SerializeField]
 	public Vector3 moveDirection = Vector3.zero;
     //Me change this to public
 
@@ -31,6 +32,7 @@ public class Movement : MonoBehaviour
 	// The required CharacterController object
 	CharacterController characterController;
 	
+	[SerializeField]
 	private float vSpeed = 0; // Vertical velocity
 	
 	[SerializeField]
