@@ -16,7 +16,6 @@ public class Lights : MonoBehaviour
 
     void Update()
     {
-        a.Draw();
 /*      // Light on off
         if (Input.GetKeyUp(KeyCode.L))
         {
@@ -35,27 +34,19 @@ public class Lights : MonoBehaviour
 
 public class LightSystem
 {
-    public LightSystem()
-    {
-
-    }
     public void Init()
     {
         // four corners
-        WhiteLight corner1 = new WhiteLight(16, 5, 16);
-        WhiteLight corner2 = new WhiteLight(16, 5, -16);
-        WhiteLight corner3 = new WhiteLight(-16, 5, 16);
-        WhiteLight corner4 = new WhiteLight(-16, 5, -16);
+        SingleLight corner1 = new WhiteLight(20, 5, 20);
+        SingleLight corner2 = new WhiteLight(20, 5, -20);
+        SingleLight corner3 = new WhiteLight(-20, 5, 20);
+        SingleLight corner4 = new WhiteLight(-20, 5, -20);
 
         // four sectors
-        SingleLight sector1 = new ColorLight(10, 4, 10, Color.red);
-        SingleLight sector2 = new ColorLight(10, 4, -10, Color.red);
-        SingleLight sector3 = new ColorLight(-10, 4, 10, Color.red);
-        SingleLight sector4 = new ColorLight(-10, 4, -10, Color.red);
-    }
-    public void Draw()
-    {
-
+        SingleLight sector1 = new ColorLight(10, 5, 10, Color.red);
+        SingleLight sector2 = new ColorLight(10, 5, -10, Color.red);
+        SingleLight sector3 = new ColorLight(-10, 5, 10, Color.red);
+        SingleLight sector4 = new ColorLight(-10, 5, -10, Color.red);
     }
 }
 
@@ -63,6 +54,11 @@ public class SingleLight
 {
     public GameObject lightGameObject;
     public Light lightComp;
+
+    virtual public void Init()
+    {
+
+    }
     //virtual lightComp.type = LightType.Point;
     // Virtual void apply() and other functions to change type, range, color and such by default,
     // but it gets overriden and changed in our subclasses. Instead of ColorLight having a constructor, 
@@ -71,14 +67,26 @@ public class SingleLight
 
 public class ColorLight : SingleLight
 {
+    override public void Init()
+    {
+
+    }
     public ColorLight()
     {
+        void Init()
+        {
+
+        }
         lightGameObject = new GameObject("ColorLight");
         lightComp = lightGameObject.AddComponent<Light>();
 
         lightComp.color = Color.red ;
 
         lightGameObject.transform.position = new Vector3(0, 0, 0);
+    }
+    void Init(int x, int y, int z, Color color)
+    {
+
     }
     public ColorLight(int x, int y, int z, Color color)
     {
@@ -94,8 +102,16 @@ public class ColorLight : SingleLight
     }
 }
 
-public class WhiteLight : LightSystem
+public class WhiteLight : SingleLight
 {
+    void Init()
+    {
+
+    }
+    void Init(int x, int y, int z)
+    {
+
+    }
     public WhiteLight()
     {
         GameObject lightGameObject = new GameObject("WhiteLight");
