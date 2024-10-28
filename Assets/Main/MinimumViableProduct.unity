@@ -857,6 +857,7 @@ MonoBehaviour:
   lookSpeed: 7
   lookYLimit: 100
   moveDirection: {x: 0, y: 0, z: 0}
+  vSpeed: 0
   gravity: 9.81
 --- !u!143 &1107969142
 CharacterController:
@@ -1720,13 +1721,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842570598}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 50, z: -75}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 108897482}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!328 &1842570600
 VideoPlayer:
   m_ObjectHideFlags: 0

@@ -5,28 +5,18 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     // Initalize vars
-    private LightSystem a;
+    private LightSystem light_system;
 
     void Start()
     {
         //myLight = GetComponent<Light>();
-        a = new LightSystem();
-        a.Init();
+        light_system = new LightSystem();
+        light_system.Init();
     }
 
     void Update()
     {
-/*      // Light on off
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            myLight.enabled = !myLight.enabled;
-        }
-
-        // Flashing light based on time
-        float t = Mathf.PingPong(Time.time, duration) / duration;
-        myLight.color = Color.Lerp(Color.red, Color.blue, t);
-
-*/
+        light_system.Update_SingleLights();
     }
 }
 
@@ -34,9 +24,21 @@ public class Lights : MonoBehaviour
 
 public class LightSystem
 {
+    public List<SingleLight> light_list = new List<SingleLight>();
+
     public void Init()
     {
-        // four corners
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 100; j++)
+            {
+                light_list.Add(new WhiteLight(i, 5, j));
+                light_list.Add(new ColorLight(i, 5, -j, Color.red));
+                light_list.Add(new WhiteLight(-i, 5, j));
+                light_list.Add(new ColorLight(-i, 5, -j, Color.green));
+            }
+        }
+/*        // four corners
         SingleLight corner1 = new WhiteLight(20, 5, 20);
         SingleLight corner2 = new WhiteLight(20, 5, -20);
         SingleLight corner3 = new WhiteLight(-20, 5, 20);
@@ -46,7 +48,14 @@ public class LightSystem
         SingleLight sector1 = new ColorLight(10, 5, 10, Color.red);
         SingleLight sector2 = new ColorLight(10, 5, -10, Color.red);
         SingleLight sector3 = new ColorLight(-10, 5, 10, Color.red);
-        SingleLight sector4 = new ColorLight(-10, 5, -10, Color.red);
+        SingleLight sector4 = new ColorLight(-10, 5, -10, Color.red);*/
+    }
+    public void Update_SingleLights()
+    {
+        foreach (var light in light_list)
+        {
+            light.UpdateLight();
+        }
     }
 }
 
@@ -54,83 +63,98 @@ public class SingleLight
 {
     public GameObject lightGameObject;
     public Light lightComp;
+    public float duration = 1.0f;
 
-    virtual public void Init()
+    public SingleLight()
     {
-
-    }
-    //virtual lightComp.type = LightType.Point;
-    // Virtual void apply() and other functions to change type, range, color and such by default,
-    // but it gets overriden and changed in our subclasses. Instead of ColorLight having a constructor, 
-    // Have it use the virtual function and override it. 
-}
-
-public class ColorLight : SingleLight
-{
-    override public void Init()
-    {
-
-    }
-    public ColorLight()
-    {
-        void Init()
-        {
-
-        }
-        lightGameObject = new GameObject("ColorLight");
+        lightGameObject = new GameObject("SingleLight");
         lightComp = lightGameObject.AddComponent<Light>();
-
-        lightComp.color = Color.red ;
-
-        lightGameObject.transform.position = new Vector3(0, 0, 0);
+        lightComp.enabled = false;
     }
-    void Init(int x, int y, int z, Color color)
+    public SingleLight(int x, int y, int z)
     {
-
-    }
-    public ColorLight(int x, int y, int z, Color color)
-    {
-        lightGameObject = new GameObject("ColorLight");
+        lightGameObject = new GameObject("SingleLight");
         lightComp = lightGameObject.AddComponent<Light>();
+        lightComp.enabled = false;
 
-        // Set parameters
-        lightComp.color = color;
+        lightComp.color = Color.yellow;
         lightComp.type = LightType.Point;
         lightComp.range = 40;
 
         lightGameObject.transform.position = new Vector3(x, y, z);
+    }
+
+    virtual public void Init()
+    {
+        //public lightGameObject = new GameObject("SingleLight");
+        //public lightComp = lightGameObject.AddComponent<Light>();
+    }
+
+    public virtual void UpdateLight()
+    {
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            lightComp.enabled = !lightComp.enabled;
+        }
+    }
+    //virtual public void 
+    // change color, change type, change location, something random and movable.
+
+    //virtual lightComp.type = LightType.Point;
+    // Virtual void apply() and other functions to change type, range, color and such by default,
+    // but it gets overriden and changed in our subclasses. Instead of ColorLight having a constructor, 
+    // Have it use the virtual function and override it. 
+
+}
+
+public class ColorLight : SingleLight
+{
+    private bool isFlashing = false;
+    public ColorLight(int x, int y, int z, Color color) : base(x, y, z)
+    {
+        lightComp.color = color;
+    }
+
+    public override void UpdateLight()
+    {
+        base.UpdateLight();
+
+        // Toggle flashing mode with 'K' key
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            isFlashing = !isFlashing;
+        }
+
+        if (isFlashing)
+        {
+            float t = Mathf.PingPong(Time.time, duration) / duration;
+            lightComp.color = Color.Lerp(Color.red, Color.blue, t);
+        }
     }
 }
 
 public class WhiteLight : SingleLight
 {
-    void Init()
+    private bool isIntensify = false;
+    public WhiteLight(int x, int y, int z) : base(x, y, z)
     {
-
-    }
-    void Init(int x, int y, int z)
-    {
-
-    }
-    public WhiteLight()
-    {
-        GameObject lightGameObject = new GameObject("WhiteLight");
-        Light lightComp = lightGameObject.AddComponent<Light>();
-
         lightComp.color = Color.white;
-
-        lightGameObject.transform.position = new Vector3(0,0,0);
     }
-    public WhiteLight(int x, int y, int z)
+
+    public override void UpdateLight()
     {
-        GameObject lightGameObject = new GameObject("WhiteLight");
-        Light lightComp = lightGameObject.AddComponent<Light>();
+        base.UpdateLight();
 
-        // Set parameters
-        lightComp.color = Color.white;
-        lightComp.type = LightType.Point;
-        lightComp.range = 40;
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            isIntensify = !isIntensify;
+        }
 
-        lightGameObject.transform.position = new Vector3(x, y, z);
+        if (isIntensify)
+        {
+            // Simple pulsing effect
+            float intensity = Mathf.PingPong(Time.time, duration);
+            lightComp.intensity = intensity + 0.5f; // Add base intensity to avoid complete darkness
+        }
     }
 }
