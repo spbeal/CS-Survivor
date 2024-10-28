@@ -357,6 +357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4395164136595703127, guid: ca0388f65a623fa4f9d1feb3cf9587b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca0388f65a623fa4f9d1feb3cf9587b8, type: 3}
       propertyPath: m_Name
       value: FunnyMan
@@ -857,6 +861,7 @@ MonoBehaviour:
   lookSpeed: 7
   lookYLimit: 100
   moveDirection: {x: 0, y: 0, z: 0}
+  vSpeed: 0
   gravity: 9.81
 --- !u!143 &1107969142
 CharacterController:
