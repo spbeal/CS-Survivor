@@ -28,9 +28,9 @@ public class LightSystem
 
     public void Init()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < 10; j++)
             {
                 light_list.Add(new WhiteLight(i, 5, j));
                 light_list.Add(new ColorLight(i, 5, -j, Color.red));
@@ -69,13 +69,13 @@ public class SingleLight
     {
         lightGameObject = new GameObject("SingleLight");
         lightComp = lightGameObject.AddComponent<Light>();
-        lightComp.enabled = false;
+        //lightComp.enabled = false;
     }
     public SingleLight(int x, int y, int z)
     {
         lightGameObject = new GameObject("SingleLight");
         lightComp = lightGameObject.AddComponent<Light>();
-        lightComp.enabled = false;
+        //lightComp.enabled = false;
 
         lightComp.color = Color.yellow;
         lightComp.type = LightType.Point;
