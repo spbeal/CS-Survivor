@@ -1,0 +1,31 @@
+Player.prefab README
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Contents:
+   - Player
+   - Player Model
+   - Camera
+   - Belt-Fed Shotgun Model
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Player:
+   - Contains player information like Box Collider, RigidBody, Character Controller, Movement (Script), and Exp Controller (Script)
+         - Movement (Script) handles player gravity, handles camera movement, and uses Character Controller to handle 4-directional player movement
+         - Exp Controller (Script) handles how the player collects and stores experience points
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Player Model:
+   - Contains all 3D models, textures, materials, and bones for the player model
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Camera:
+   - Contains the player camera/field of vision, Camera settings, and an Audio Listener
+         - The Audio Listener makes sure that sounds are received as close to the camera as possible
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Belt-Fed Shotgun Model:
+   - Contains all 3D models, textures, materials, and bones for the weapon model
+   - Contains Gun System (Script)
+         - Gun System (Script) handles the amount of ammo in the weapon, firing the weapon, how many times the weapon can fire before reloading, the amount of time it takes to reload, checking if the weapon can fire, creating muzzle flashes, and damaging enemy entities if in range
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What questions are being answered here? Who would be asking these questions? What other questions would they be asking?
+   - What is contained in this prefab? What role does each element serve? How is it organized?
+   - Boss/Supervisors/Project Directors
+   - Customer/End User
+   - Stakeholders?
+   - Could this prefab be improved? Does it contain everything it needs? Is it missing anything? Could it be structured more efficiently? How will it interact with other prefabs?
