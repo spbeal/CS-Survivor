@@ -20,11 +20,30 @@ public class Lights : MonoBehaviour
     }
 }
 
-// Class with all the light functionality. 
 
+public class LightFactory
+{
+    public SingleLight CreateLight(string lightType, int x, int y, int z, Color? color = null)
+    {
+        if (lightType == "WhiteLight")
+        {
+            return new WhiteLight(x, y, z);
+        }
+        else if (lightType == "ColorLight" && color != null)
+        {
+            return new ColorLight(x, y, z, color.Value);
+        }
+
+        return null; // or throw an exception if you prefer
+    }
+}
+
+
+// Class with the main product of the lights
 public class LightSystem
 {
     public List<SingleLight> light_list = new List<SingleLight>();
+    private LightFactory lightFactory = new LightFactory();
 
     public void Init()
     {
@@ -32,10 +51,10 @@ public class LightSystem
         {
             for (int j = 0; j < 10; j++)
             {
-                light_list.Add(new WhiteLight(i, 5, j));
-                light_list.Add(new ColorLight(i, 5, -j, Color.red));
-                light_list.Add(new WhiteLight(-i, 5, j));
-                light_list.Add(new ColorLight(-i, 5, -j, Color.green));
+                light_list.Add(lightFactory.CreateLight("WhiteLight", i, 5, j));
+                light_list.Add(lightFactory.CreateLight("ColorLight", i, 5, -j, Color.red));
+                light_list.Add(lightFactory.CreateLight("WhiteLight", -i, 5, j));
+                light_list.Add(lightFactory.CreateLight("ColorLight", -i, 5, -j, Color.green));
             }
         }
 /*        // four corners
