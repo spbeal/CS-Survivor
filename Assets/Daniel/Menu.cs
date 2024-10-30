@@ -32,7 +32,11 @@ public class PauseMenu : Menu
     }
 }
 
+<<<<<<< HEAD
 public class MenuItem
 {
 
 }
+=======
+//public class MenuItem
+>>>>>>> b3c952aed1bd647b8c8f9725a7eb817a896367aa
