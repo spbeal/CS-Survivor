@@ -33,3 +33,6 @@ public class PauseMenu : Menu
 }
 
 public class MenuItem
+{
+
+}
