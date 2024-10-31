@@ -6,13 +6,15 @@ public class Menu
 {
     public virtual void DefaultBehavior() // called when <space> pressed, probably
     {
-        this.SetActive(false);
-        time.timeScale = 1;
+        //this.SetActive(false); it still isn't a game object
+        Time.timeScale = 1;
     }
 }
 
 public class ItemMenu : Menu
 {
+    MenuItem[] MenuItems = new MenuItem[10];
+
     public override void DefaultBehavior()
     {
         for(int i = 0; i < MenuItems.Length; i++){
@@ -21,7 +23,7 @@ public class ItemMenu : Menu
             }
         }
         Time.timeScale = 1;
-        this.SetActive(false);
+        //this.SetActive(false); it's not a game object silly
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -56,15 +58,15 @@ public class MenuItem
 {
     string Name;
     int Price;
-    bool Selected;
+    public bool Selected;
     int DamageModifier;
     int HealthModifier;
     int ArmorModifier;
-    int GetPrice()
+    public int GetPrice()
     {
         return this.Price;
     }
-    void Buy(){
+    public void Buy(){
         /*
         if(Player.Money < this.Price){
             break;
