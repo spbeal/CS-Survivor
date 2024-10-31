@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Skill
 {
-    public virtual void Apply(PlayerStats playerStats);
+    public virtual void Apply(PlayerStats playerStats)
+    {
+    }
 }
 
 
