@@ -107,11 +107,18 @@ public class EnemyBehavior : MonoBehaviour
         if (!alreadyAttacked)
         {
             // Start the melee attack
-            StartCoroutine(MeleeAttack());
+            Attack();
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+    // The default melee attack, which subclasses can override
+    public virtual void Attack()
+    {
+        StartCoroutine(MeleeAttack());
+    }
+
 
     private IEnumerator MeleeAttack()
     {
