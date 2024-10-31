@@ -33,6 +33,10 @@ public class GunSystem : MonoBehaviour
     [SerializeField]
     private GameObject muzzleFlash;
 
+    // Dynamic binding objects setup
+    private gunNotFiring checkGunFireObjectSub = new gunFiring();
+    private gunNotFiring checkGunFireObjectSuper = new gunNotFiring();
+
     void Awake()
     {
         bulletsLeft = magazineSize;
@@ -42,6 +46,15 @@ public class GunSystem : MonoBehaviour
     void Update()
     {
         MyInput();
+
+        // Demonstration of Dynamic binding using the objects defined above
+        if(shooting){
+            // calls the override version of the printGunFire function in the subclass
+            checkGunFireObjectSub.printGunFire();
+        }else{
+            // calls the virtual version of the printGunFire function in the superclass
+            checkGunFireObjectSuper.printGunFire();
+        }
     }
 
     private void MyInput()
@@ -119,5 +132,18 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
+    }
+}
+
+// Dynamic binding classes
+public class gunFiring : gunNotFiring {
+    public override void printGunFire(){
+        Debug.Log("Gun is firing");
+    }
+}
+
+public class gunNotFiring {
+    public virtual void printGunFire(){
+        Debug.Log("Gun is not currently firing");
     }
 }
