@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class SkillManager
 {
+
     /* SKILLS --
      *  health
      *  stamina
      *  move speed
      *  exp rate
     */
+
+
     public enum Skills
     {
         Health,
         MovementSpeed,
     }
 
-    private HealthSkill healthSkill;
-    private MovementSpeedSkill movementSpeedSkill;
     private PlayerStats playerStats;
+
+    private Skill healthSkill;
+    private Skill speedSkill;
+
+    public SkillManager(PlayerStats stats)
+    {
+        playerStats = stats;
+
+        healthSkill = new HealthBoost(10);
+        speedSkill = new SpeedBoost(1);
+    }
 
     public bool HasEnoughPoints(Skills skill, int requiredPoints)
     {
-        return true;
+        return playerStats.GetSkillPoints() >= requiredPoints;
     }
 
     public void UpgradeSkill(Skills skill)
@@ -30,18 +42,21 @@ public class SkillManager
         switch (skill)
         {
             case Skills.Health:
-                healthSkill.Upgrade();
+                healthSkill.Apply(playerStats);
                 break;
             case Skills.MovementSpeed:
-                movementSpeedSkill.Upgrade();
+                speedSkill.Apply(playerStats);
                 break;
+            default:
+                Debug.LogError("Skill not found!");
+                return;
         }
         Debug.Log(skill.ToString() + " upgraded!");
     }
 
 }
 
-
+/*
 public class HealthSkill : SkillManager
 {
     private int _requiredPoints;
@@ -59,7 +74,8 @@ public class HealthSkill : SkillManager
 
     public void Upgrade()
     {
-        if (_playerCurrentPoints < _requiredPoints) {
+        if (_playerCurrentPoints < _requiredPoints)
+        {
             Debug.Log("Not enough points to upgrade MaxHealth");
         }
         else
@@ -90,7 +106,8 @@ public class MovementSpeedSkill : SkillManager
 
     public void Upgrade()
     {
-        if (_playerCurrentPoints < _requiredPoints) {
+        if (_playerCurrentPoints < _requiredPoints)
+        {
             Debug.Log("Not enough points to upgrade MovementSpeed");
         }
         else
@@ -102,4 +119,5 @@ public class MovementSpeedSkill : SkillManager
         }
     }
 }
+*/
 

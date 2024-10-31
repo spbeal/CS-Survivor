@@ -7,25 +7,33 @@ public class ExpController : MonoBehaviour
 
     // create an isntance of the class
     public static ExpController instance;
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
     }
 
 
     // variables
-    public int currentExp;
+    private int _currentExp;
 
     public ExpPickup pickup;
 
 
-    // methods
-    public void GetExp(int amountToGet) {
-        currentExp += amountToGet;
-        Debug.Log(currentExp);
+    void Start()
+    {
+        _currentExp = 0;
     }
 
-    public void SpawnExp(Vector3 position) {
-        Instantiate(pickup, position + new Vector3((Random.value-0.5f)*2, (Random.value-0.5f)*2, (Random.value-0.5f)*2), Quaternion.identity);
+
+    // methods
+    public void GetExp(int amountToGet)
+    {
+        _currentExp += amountToGet;
+    }
+
+    public void SpawnExp(Vector3 position)
+    {
+        ExpPickup spawnedExp = Instantiate(pickup, position + new Vector3((Random.value-0.5f)*2, (Random.value-0.5f)*2, (Random.value-0.5f)*2), Quaternion.identity) as ExpPickup;
 
         // TODO: inside the enemy controller:
         //
@@ -33,8 +41,14 @@ public class ExpController : MonoBehaviour
         //      ExpController.instance.SpawnExp(transform.position);
         //  }
 
+        Destroy(spawnedExp, 1f);
         // TODO: add a despawn timer.
 
+    }
+
+    public int GetCurrentExp()
+    {
+        return _currentExp;
     }
 
 }

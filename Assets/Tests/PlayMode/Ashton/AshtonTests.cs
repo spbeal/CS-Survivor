@@ -66,10 +66,10 @@ public class AshtonTests
         yield return new WaitWhile(() => sceneLoaded == false);
 
         var player = GameObject.FindWithTag("Player");
-        var initialExp = ExpController.instance.currentExp;
+        var initialExp = ExpController.instance.GetCurrentExp();
 
         var expPickup = new GameObject("ExpPickup").AddComponent<ExpPickup>();
-        expPickup.expValue = 0;
+//        expPickup._expValue = 0;
 
         // Simulate spawning experience at a certain position
         Vector3 spawnPosition = new Vector3(0, 0, 0);
@@ -78,7 +78,7 @@ public class AshtonTests
         expPickup.transform.position = player.transform.position;
         yield return new WaitForSeconds(0.1f);  // Simulate time for the pickup to be collected
 
-        Assert.AreEqual(initialExp, ExpController.instance.currentExp, "Exp value should remain the same when picking up 0 EXP.");
+        Assert.AreEqual(initialExp, ExpController.instance.GetCurrentExp(), "Exp value should remain the same when picking up 0 EXP.");
     }
 
 
@@ -89,7 +89,7 @@ public class AshtonTests
 
         // Setup the exp prefab manually in the test if needed
         var expPrefab = new GameObject("ExpPickup").AddComponent<ExpPickup>();
-        expPrefab.expValue = 10;  // Set a default value for testing
+//        expPrefab._expValue = 10;  // Set a default value for testing
 
         // Ensure the pickup is assigned in the ExpController
         ExpController.instance.pickup = expPrefab;
@@ -115,7 +115,7 @@ public class AshtonTests
 
         // Set up the exp prefab manually in the test
         var expPrefab = new GameObject("ExpPickup").AddComponent<ExpPickup>();
-        expPrefab.expValue = 10;  // Assign default EXP value for the pickups
+//        expPrefab._expValue = 10;  // Assign default EXP value for the pickups
 
         // Ensure the pickup is assigned in the ExpController
         ExpController.instance.pickup = expPrefab;

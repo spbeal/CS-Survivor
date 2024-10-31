@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1301752993210337837}
   - component: {fileID: 6418922719473171163}
   - component: {fileID: 902539069089859744}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Exp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 355677969022568778}
   - component: {fileID: 5373616695046189206}
   - component: {fileID: 2573933121853431853}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ExpPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -186,7 +186,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2573933121853431853
 MonoBehaviour:
