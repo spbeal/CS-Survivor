@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Skill
+public class Skill
 {
-    public abstract void Apply(PlayerStats playerStats);
+    public virtual void Apply(PlayerStats playerStats);
 }
 
 
