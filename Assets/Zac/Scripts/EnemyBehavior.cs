@@ -24,7 +24,7 @@ public class EnemyBehavior : MonoBehaviour
     bool alreadyAttacked;
 
     // Melee attack
-    public int meleeDamage = 20; // Damage inflicted by melee attack
+    public int meleeDamage = 10; // Damage inflicted by melee attack
     public float attackDelay = 0.5f; // Delay before attack lands
 
     // States
@@ -146,29 +146,6 @@ public class EnemyBehavior : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

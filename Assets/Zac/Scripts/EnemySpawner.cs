@@ -90,18 +90,6 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //Old system below   |
 //                   |
 //                   V

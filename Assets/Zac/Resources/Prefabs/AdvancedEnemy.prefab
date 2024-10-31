@@ -133,9 +133,12 @@ MonoBehaviour:
   health: 20
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
+  patrolWaitTime: 2
   timeBetweenAttacks: 0
-  sightRange: 15
-  attackRange: 3
+  meleeDamage: 10
+  attackDelay: 1
+  sightRange: 100
+  attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &-1448414101478400454
