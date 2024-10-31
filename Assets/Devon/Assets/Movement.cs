@@ -5,12 +5,42 @@ using UnityEngine;
 // This script requires the component CharacterController to work
 [RequireComponent(typeof(CharacterController))]
 
+// Dynamic binding stuff, prints messages when the player moves from 'sub'
+public class sup {
+	public virtual void printDir(){
+		if(Input.GetAxis("Vertical") != 0){
+			Debug.Log("Player moved vertically (sup)");
+		}
+			
+		if(Input.GetAxis("Horizontal") != 0){
+			Debug.Log("Player moved horizontally (sup)");
+		}
+	}
+}
+
+public class sub : sup {
+	public override void printDir(){
+		if(Input.GetAxis("Vertical") != 0){
+			Debug.Log("Player moved vertically (sub)");
+		}
+		
+		if(Input.GetAxis("Horizontal") != 0){
+			Debug.Log("Player moved horizontally (sub)");
+		}
+	}
+}
+
+
+
 public class Movement : MonoBehaviour
 {
 	// Customizable the player's camera, their walk speed, their look speed,
 	// and their look Y limit
 	[SerializeField]
 	private Camera playerCamera;
+	
+	// Dynamic binding object
+	sup object1 = new sub();
 
     [SerializeField]
 	public float walkSpeed = 10f;
@@ -49,7 +79,7 @@ public class Movement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {		
 		// Sets up directional movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 		Vector3 right = transform.TransformDirection(Vector3.right);
@@ -73,5 +103,10 @@ public class Movement : MonoBehaviour
 		vSpeed -= gravity * Time.deltaTime;
 		moveDirection.y = vSpeed;
 		characterController.Move(moveDirection * Time.deltaTime);
+		
+		//Dynamic binding
+		object1.printDir();
+		
+		
 	}
 }
