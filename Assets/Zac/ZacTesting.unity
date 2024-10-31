@@ -856,7 +856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03c0fc6c93d3ad489055ddfea8ebfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentExp: 0
   pickup: {fileID: 0}
 --- !u!114 &1076078102
 MonoBehaviour:
