@@ -34,13 +34,13 @@ public class sub : sup {
 
 public class Movement : MonoBehaviour
 {
+	// Dynamic binding object
+	sup object1 = new sub();
+	
 	// Customizable the player's camera, their walk speed, their look speed,
 	// and their look Y limit
 	[SerializeField]
 	private Camera playerCamera;
-	
-	// Dynamic binding object
-	sup object1 = new sub();
 
     [SerializeField]
 	public float walkSpeed = 10f;
