@@ -8,10 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class SamTests
 {
-    private GameObject playerObject;
-    private Movement playerMovement;
-    private GameObject terrainObject;
-
     private bool sceneLoaded;
 
     [OneTimeSetUp]
@@ -26,39 +22,8 @@ public class SamTests
         sceneLoaded = true;
     }
 
-    // Use this to create your own scene with player, terrain, and camera.
-    [SetUp]
-    public void Setup()
-    {
-        /* // Create Terrain GameObject
-         terrainObject = GameObject.CreatePrimitive(PrimitiveType.Plane);
-         terrainObject.name = "Terrain";
-         terrainObject.AddComponent<Terrain>();
-
-         Terrain terrainMain = GameObject.FindObjectOfType<Terrain>();
-         TerrainCollider terrainCollider = terrainObject.AddComponent<TerrainCollider>();
-         terrainCollider.terrainData = terrainMain.terrainData;
-
-         // Scale terrain and move it down slightly so player starts above it
-         terrainObject.transform.position = new Vector3(0, -1, 0);
-         terrainObject.transform.localScale = new Vector3(5, 1, 5);  // Adjust terrain size if needed*/
-
-        // Instantiate a new Player GameObject and attach the Movement component
-        //playerObject = new GameObject("Player");
-        //playerObject.AddComponent<CharacterController>(); // Required for movement
-        //playerMovement = playerObject.AddComponent<Movement>();
-
-        // Position player above the terrain so it interacts with the TerrainCollider
-        //playerObject.transform.position = new Vector3(0, 0, 0);  // Position the player above the terrain
-
-        // Create and assign a Camera to the player
-        /*        Camera playerCam = new GameObject("PlayerCamera").AddComponent<Camera>();
-                playerMovement.GetType().GetField("playerCamera", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                    .SetValue(playerMovement, playerCam);*/
-    }
-
     [UnityTest]
-    public IEnumerator movement_test_left()
+    public IEnumerator boundary_left()
     {
         yield return new WaitWhile(() => sceneLoaded == false);
         // Wait for the scene to load (if applicable, not needed here)
@@ -89,7 +54,7 @@ public class SamTests
     }
 
     [UnityTest]
-    public IEnumerator movement_test_right()
+    public IEnumerator boundary_right()
     {
         yield return new WaitWhile(() => sceneLoaded == false);
         // Wait for the scene to load (if applicable, not needed here)
@@ -122,7 +87,7 @@ public class SamTests
     }
 
     [UnityTest]
-    public IEnumerator movement_test_stress()
+    public IEnumerator boundary_stress()
     {
         yield return new WaitWhile(() => sceneLoaded == false);
         // Wait for the scene to load (if applicable, not needed here)

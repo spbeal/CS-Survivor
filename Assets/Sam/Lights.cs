@@ -18,6 +18,16 @@ public class Lights : MonoBehaviour
     {
         light_system.Update_SingleLights();
     }
+
+/*    SingleLight TestLightFactory(string lightType, int x, int y, int z, Color? color = null)
+    {
+        LightFactory a;
+        a.CreateLight(lightType, x, y, z, color);
+    }*/
+/*    void TestLightSystem()
+    {
+        LightSystem a;
+    }*/
 }
 
 
@@ -32,6 +42,10 @@ public class LightFactory
         else if (lightType == "ColorLight" && color != null)
         {
             return new ColorLight(x, y, z, color.Value);
+        }
+        else if (lightType == "SingleLight")
+        {
+            return new SingleLight(x, y, z);
         }
 
         return null; // or throw an exception if you prefer
@@ -57,17 +71,6 @@ public class LightSystem
                 light_list.Add(lightFactory.CreateLight("ColorLight", -i, 5, -j, Color.green));
             }
         }
-/*        // four corners
-        SingleLight corner1 = new WhiteLight(20, 5, 20);
-        SingleLight corner2 = new WhiteLight(20, 5, -20);
-        SingleLight corner3 = new WhiteLight(-20, 5, 20);
-        SingleLight corner4 = new WhiteLight(-20, 5, -20);
-
-        // four sectors
-        SingleLight sector1 = new ColorLight(10, 5, 10, Color.red);
-        SingleLight sector2 = new ColorLight(10, 5, -10, Color.red);
-        SingleLight sector3 = new ColorLight(-10, 5, 10, Color.red);
-        SingleLight sector4 = new ColorLight(-10, 5, -10, Color.red);*/
     }
     public void Update_SingleLights()
     {

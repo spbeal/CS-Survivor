@@ -8,7 +8,8 @@
         "Player",
         "Exp",
         "GunAssemblyDef",
-        "ZacAssemblyDef"
+        "ZacAssemblyDef",
+        "Lights"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
