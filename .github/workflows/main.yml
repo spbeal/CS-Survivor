@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Build my project ✨
+    name: ✨ CI Pipeline for Unity Test Runner ✨
     runs-on: windows-latest
     steps:
       # Checkout
