@@ -66,9 +66,9 @@ public class LightSystem
             for (int j = 0; j < 10; j++)
             {
                 light_list.Add(lightFactory.CreateLight("WhiteLight", i, 5, j));
-                light_list.Add(lightFactory.CreateLight("ColorLight", i, 5, -j, Color.red));
+                light_list.Add(lightFactory.CreateLight("ColorLight", i, 5, -j, Color.yellow));
                 light_list.Add(lightFactory.CreateLight("WhiteLight", -i, 5, j));
-                light_list.Add(lightFactory.CreateLight("ColorLight", -i, 5, -j, Color.green));
+                light_list.Add(lightFactory.CreateLight("ColorLight", -i, 5, -j, Color.yellow));
             }
         }
     }
