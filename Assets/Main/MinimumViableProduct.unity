@@ -1872,28 +1872,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1672980297}
-  - component: {fileID: 1672980296}
+  - component: {fileID: 1672980298}
   m_Layer: 0
-  m_Name: MenuManager
+  m_Name: PauseMenuFacade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1672980296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672980295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7e3ac8c5d213eff96bf3d75a4b52b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseMenuObject: {fileID: 631201315}
-  PlayButton: {fileID: 428210769}
 --- !u!4 &1672980297
 Transform:
   m_ObjectHideFlags: 0
@@ -1909,6 +1895,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1672980298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672980295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62503655f9ad1c24c94f1ae235063c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenuObject: {fileID: 631201315}
+  PlayButton: {fileID: 428210769}
 --- !u!1 &1842570598
 GameObject:
   m_ObjectHideFlags: 0
