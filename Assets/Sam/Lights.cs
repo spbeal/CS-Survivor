@@ -56,7 +56,7 @@ public class LightFactory
 // Class with the main product of the lights
 public class LightSystem
 {
-    public List<SingleLight> light_list = new List<SingleLight>();
+    private List<SingleLight> light_list = new List<SingleLight>();
     private LightFactory lightFactory = new LightFactory();
 
     public void Init()
@@ -78,6 +78,17 @@ public class LightSystem
         {
             light.UpdateLight();
         }
+    }
+
+    // Additional testing
+    public List<SingleLight> GetAllLights()
+    {
+        return light_list;
+    }
+
+    public int LightCount()
+    {
+        return light_list.Count;
     }
 }
 
