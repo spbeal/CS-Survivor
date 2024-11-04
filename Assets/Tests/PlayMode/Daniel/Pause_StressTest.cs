@@ -33,7 +33,7 @@ public class InitialTest
         Assert.IsNotNull(gobject, "MenuManager not found in the scene");
 
         // Get the MenuManager component from the GameObject
-        var menuManager = gobject.GetComponent<PauseMenuFacade>();
+        var menuManager = gobject.GetComponent<PauseFacade>();
         Assert.IsNotNull(menuManager, "MenuManager script not found");
 
         bool gamePausedUnpausedCorrectly = true;
@@ -80,7 +80,7 @@ public class InitialTest
         Assert.IsNotNull(MManager, "MenuManager not found in the scene");
 
         // Get the MenuManager component from the GameObject
-        var menuManager = MManager.GetComponent<PauseMenuFacade>();
+        var menuManager = MManager.GetComponent<PauseFacade>();
         Assert.IsNotNull(menuManager, "MenuManager script not found");
 
         var Enemy = GameObject.Find("Enemy1");
