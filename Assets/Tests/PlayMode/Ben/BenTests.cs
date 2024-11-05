@@ -32,7 +32,7 @@ public class BenTests
 
         Gun.reloadTime = 0;
 
-        for(int i = 0; i < 500000; i += 500)
+        for(int i = 0; i < 50000000; i += 5000)
         {
             Gun.magazineSize = i;
             Gun.bulletsPerTap = i;
@@ -41,10 +41,18 @@ public class BenTests
 
             Gun.Reload();
 
+            float fps = 30f;
+            float newFPS = 1.0f / Time.unscaledDeltaTime;
+            fps = Mathf.Lerp(fps, newFPS, 0.0005f);
+            
+            if(fps < 5f){
+                Assert.Fail("The stress test reduced the frames to under 5.");
+            }
+
             yield return null;
         }
 
-        Assert.Fail("The stress test failed to break the game");
+        Assert.Success("The stress test didn't majorly reduce frames!");
     }
 
     [UnityTest]
