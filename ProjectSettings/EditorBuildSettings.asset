@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Zac/ZacTesting.unity
     guid: cc8cbede7903f3a4eae05caa81dd9771
+  - enabled: 1
+    path: Assets/Zac/ZacStressTest.unity
+    guid: 510acd13f50c24b4dbb0b5993cd3e77c
   m_configObjects: {}

@@ -60,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(string enemyType)
+    public void SpawnEnemy(string enemyType)
     {
         // Ensure there are spawn points
         if (spawnPoints.Length == 0)
