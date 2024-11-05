@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillManager
+public class BuffManager
 {
 
     /* SKILLS --
@@ -13,7 +13,7 @@ public class SkillManager
     */
 
 
-    public enum Skills
+    public enum Buffs
     {
         Health,
         MovementSpeed,
@@ -21,103 +21,37 @@ public class SkillManager
 
     private PlayerStats playerStats;
 
-    private Skill healthSkill;
-    private Skill speedSkill;
+    private Buff healthBuff;
+    private Buff speedBuff;
 
-    public SkillManager(PlayerStats stats)
+    public BuffManager(PlayerStats stats)
     {
         playerStats = stats;
 
-        healthSkill = new HealthBoost(10);
-        speedSkill = new SpeedBoost(1);
+        healthBuff = new Health(10);
+        speedBuff = new Speed(1);
     }
 
-    public bool HasEnoughPoints(Skills skill, int requiredPoints)
+    public bool HasEnoughPoints(Buffs buff, int requiredPoints)
     {
-        return playerStats.GetSkillPoints() >= requiredPoints;
+        return playerStats.GetGold() >= requiredPoints;
     }
 
-    public void UpgradeSkill(Skills skill)
+    public void UpgradeBuff(Buffs buff)
     {
-        switch (skill)
+        switch (buff)
         {
-            case Skills.Health:
-                healthSkill.Apply(playerStats);
+            case Buffs.Health:
+                healthBuff.Apply(playerStats);
                 break;
-            case Skills.MovementSpeed:
-                speedSkill.Apply(playerStats);
+            case Buffs.MovementSpeed:
+                speedBuff.Apply(playerStats);
                 break;
             default:
-                Debug.LogError("Skill not found!");
+                Debug.LogError("Buff not found!");
                 return;
         }
-        Debug.Log(skill.ToString() + " upgraded!");
+        Debug.Log(buff.ToString() + " upgraded!");
     }
 
 }
-
-/*
-public class HealthSkill : SkillManager
-{
-    private int _requiredPoints;
-    private int _maxHealth;
-    private int _playerCurrentPoints;
-
-    private PlayerStats playerStats;
-
-    public HealthSkill()
-    {
-        _requiredPoints = 1;
-        _maxHealth = playerStats.GetMaxHealth();
-        _playerCurrentPoints = playerStats.GetSkillPoints();
-    }
-
-    public void Upgrade()
-    {
-        if (_playerCurrentPoints < _requiredPoints)
-        {
-            Debug.Log("Not enough points to upgrade MaxHealth");
-        }
-        else
-        {
-            playerStats.SetSkillPoints(_playerCurrentPoints - _requiredPoints);
-            _requiredPoints++;
-            _maxHealth++;
-            playerStats.SetMaxHealth(_maxHealth);
-        }
-    }
-}
-
-
-public class MovementSpeedSkill : SkillManager
-{
-    private int _requiredPoints;
-    private int _movementSpeed;
-    private int _playerCurrentPoints;
-
-    private PlayerStats playerStats;
-
-    public MovementSpeedSkill()
-    {
-        _requiredPoints = 1;
-        _movementSpeed = playerStats.GetSpeed();
-        _playerCurrentPoints = playerStats.GetSkillPoints();
-    }
-
-    public void Upgrade()
-    {
-        if (_playerCurrentPoints < _requiredPoints)
-        {
-            Debug.Log("Not enough points to upgrade MovementSpeed");
-        }
-        else
-        {
-            playerStats.SetSkillPoints(_playerCurrentPoints - _requiredPoints);
-            _requiredPoints++;
-            _movementSpeed++;
-            playerStats.SetSpeed(_movementSpeed);
-        }
-    }
-}
-*/
-

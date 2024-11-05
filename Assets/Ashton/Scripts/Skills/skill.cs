@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill
+public class Buff
 {
-    public virtual void Apply(PlayerStats playerStats)
-    {
-    }
+    public virtual void Apply(PlayerStats playerStats) { }
 }
 
 
-public class HealthBoost : Skill
+public class Health : Buff
 {
     private int _healthIncrease;
 
-    public HealthBoost(int healthIncrease)
+    public Health(int healthIncrease)
     {
         _healthIncrease = healthIncrease;
     }
@@ -26,11 +24,11 @@ public class HealthBoost : Skill
 }
 
 
-public class SpeedBoost : Skill
+public class Speed : Buff
 {
     private int _speedIncrease;
 
-    public SpeedBoost(int speedIncrease)
+    public Speed(int speedIncrease)
     {
         _speedIncrease = speedIncrease;
     }
