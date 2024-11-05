@@ -52,7 +52,7 @@ public class BenTests
             yield return null;
         }
 
-        Assert.Success("The stress test didn't majorly reduce frames!");
+        Assert.Pass("The stress test didn't majorly reduce frames!");
     }
 
     [UnityTest]
