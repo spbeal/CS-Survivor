@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats
+public class PlayerStats : MonoBehaviour
 {
+
+    public static PlayerStats instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // variables for the player stats
     private int _health;
     private int _speed;
     private int _skillPoints;
+
+    private int _gold;
 
 
 
@@ -28,6 +36,11 @@ public class PlayerStats
         return _skillPoints;
     }
 
+    public int GetGold()
+    {
+        return _gold;
+    }
+
 
 
     // set methods to change the value of the stats
@@ -44,6 +57,11 @@ public class PlayerStats
     public void SetSkillPoints(int newSkillPoints)
     {
         _skillPoints = newSkillPoints;
+    }
+
+    public void SetGold(int newGold)
+    {
+        _gold = newGold;
     }
 
 
