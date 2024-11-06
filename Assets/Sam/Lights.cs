@@ -61,7 +61,7 @@ public class LightSystem
 
     public void Init()
     {
-        for (int i = 0; i < 10; i++)
+/*        for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
             {
@@ -70,6 +70,17 @@ public class LightSystem
                 light_list.Add(lightFactory.CreateLight("WhiteLight", -i, 5, j));
                 light_list.Add(lightFactory.CreateLight("ColorLight", -i, 5, -j, Color.yellow));
             }
+        }*/
+        for (int i = 0; i < 10; i++)
+        {
+            //Middle
+            //light_list.Add(lightFactory.CreateLight("WhiteLight", (-i * 15)+30, 4, 0));
+            light_list.Add(lightFactory.CreateLight("ColorLight", (-i * 15), 7, 0, Color.white));
+            //Sides
+            light_list.Add(lightFactory.CreateLight("WhiteLight",  (-i * 15), 0, 22));
+            light_list.Add(lightFactory.CreateLight("ColorLight",  (-i * 15), 7, -22, Color.white));
+            light_list.Add(lightFactory.CreateLight("WhiteLight",  (-i * 15), 0, -22));
+            light_list.Add(lightFactory.CreateLight("ColorLight",  (-i * 15), 7, 22, Color.white));
         }
     }
     public void Update_SingleLights()
@@ -112,7 +123,7 @@ public class SingleLight
 
         lightComp.color = Color.yellow;
         lightComp.type = LightType.Point;
-        lightComp.range = 40;
+        lightComp.range = 35;
 
         lightGameObject.transform.position = new Vector3(x, y, z);
     }
@@ -163,6 +174,10 @@ public class ColorLight : SingleLight
             float t = Mathf.PingPong(Time.time, duration) / duration;
             lightComp.color = Color.Lerp(Color.red, Color.blue, t);
         }
+        else
+        {
+            lightComp.color = Color.white;
+        }
     }
 }
 
@@ -188,6 +203,10 @@ public class WhiteLight : SingleLight
             // Simple pulsing effect
             float intensity = Mathf.PingPong(Time.time, duration);
             lightComp.intensity = intensity + 0.5f; // Add base intensity to avoid complete darkness
+        }
+        else
+        {
+            //lightComp.intensity = 0.5f;
         }
     }
 }
