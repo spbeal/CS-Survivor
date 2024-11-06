@@ -22,7 +22,7 @@ jobs:
             Library-
 
       # Test
-      - name: Run tests
+      - name: Run playmode tests
         uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -32,7 +32,19 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           testMode: playmode # Specify test mode here (playmode or editmode)
           #customParameters: '-testResults TestResults.xml'
-
+          
+      # Test
+      - name: Run editmode tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          testMode: editmode # Specify test mode here (playmode or editmode)
+          #customParameters: '-testResults TestResults.xml'
+          
       # Upload test results
       - name: Upload test results
         uses: actions/upload-artifact@v3
