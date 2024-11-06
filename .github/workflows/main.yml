@@ -31,7 +31,14 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           testMode: playmode
-          customParameters: '-testResults TestResults_PlayMode.xml'
+
+      # Upload playmode test results
+      - name: Upload playmode test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: PlayModeTestResults
+          path: TestResults_PlayMode.xml
+
       
       # Run editmode tests
       - name: Run editmode tests
@@ -43,14 +50,6 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           testMode: editmode
-          customParameters: '-testResults TestResults_EditMode.xml'
-
-      # Upload playmode test results
-      - name: Upload playmode test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: PlayModeTestResults
-          path: TestResults_PlayMode.xml
 
       # Upload editmode test results
       - name: Upload editmode test results
