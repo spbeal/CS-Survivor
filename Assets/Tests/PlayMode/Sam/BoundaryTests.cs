@@ -30,16 +30,17 @@ public class SamTests
         // Wait for the scene to load (if applicable, not needed here)
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
-        var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
 
+        float walkSpeed = _PlayerStats.GetSpeed();
 
-        Vector3 downMove = Vector3.down * _Movement.walkSpeed;
+        Vector3 downMove = Vector3.down * walkSpeed;
 
         for (int i = 0; i < 2000; i++)
         {
 
             // Move player to the left with the updated speed
-            downMove = Vector3.down * _Movement.walkSpeed;
+            downMove = Vector3.down * walkSpeed;
             Player.Move(downMove * Time.deltaTime);
 
             yield return null; // Wait for the next frame
@@ -60,16 +61,17 @@ public class SamTests
         // Wait for the scene to load (if applicable, not needed here)
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
-        var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
 
+        float walkSpeed = _PlayerStats.GetSpeed();
 
-        Vector3 backMove = Vector3.right * _Movement.walkSpeed;
+        Vector3 backMove = Vector3.right * walkSpeed;
 
         for (int i = 0; i < 2000; i++)
         {
 
             // Move player to the left with the updated speed
-            backMove = Vector3.right * _Movement.walkSpeed;
+            backMove = Vector3.right * walkSpeed;
             Player.Move(backMove * Time.deltaTime);
 
             yield return null; // Wait for the next frame
@@ -89,19 +91,21 @@ public class SamTests
         // Wait for the scene to load (if applicable, not needed here)
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
-        var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+        float walkSpeed = _PlayerStats.GetSpeed();
 
 
-        Vector3 forwardMove = Vector3.left * _Movement.walkSpeed;
+        Vector3 forwardMove = Vector3.left * walkSpeed;
 
         // Push to left wall to check front boundary
-        Vector3 leftMove = Vector3.forward * _Movement.walkSpeed;
+        Vector3 leftMove = Vector3.forward * walkSpeed;
 
         for (int i = 0; i < 500; i++)
         {
 
             // Move player to the left with the updated speed
-            leftMove = Vector3.forward * _Movement.walkSpeed;
+            leftMove = Vector3.forward * walkSpeed;
             Player.Move(leftMove * Time.deltaTime);
 
             yield return null; // Wait for the next frame
@@ -111,7 +115,7 @@ public class SamTests
         {
 
             // Move player to the left with the updated speed
-            forwardMove = Vector3.left * _Movement.walkSpeed;
+            forwardMove = Vector3.left * walkSpeed;
             Player.Move(forwardMove * Time.deltaTime);
 
             yield return null; // Wait for the next frame
@@ -132,16 +136,18 @@ public class SamTests
         // Wait for the scene to load (if applicable, not needed here)
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
-        var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+        float walkSpeed = _PlayerStats.GetSpeed();
 
 
-        Vector3 leftMove = Vector3.forward * _Movement.walkSpeed;
+        Vector3 leftMove = Vector3.forward * walkSpeed;
 
         for (int i = 0; i < 2000; i++)
         {
 
             // Move player to the left with the updated speed
-            leftMove = Vector3.forward * _Movement.walkSpeed;
+            leftMove = Vector3.forward * walkSpeed;
             Player.Move(leftMove * Time.deltaTime);
 
             yield return null; // Wait for the next frame
@@ -163,15 +169,17 @@ public class SamTests
         //yield return new WaitForEndOfFrame();
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
-        var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
 
-        Vector3 rightMove = Vector3.back * _Movement.walkSpeed;
+        float walkSpeed = _PlayerStats.GetSpeed();
+
+        Vector3 rightMove = Vector3.back * walkSpeed;
 
         for (int i = 0; i < 2000; i++)
         {
 
             // Move player to the left with the updated speed
-            rightMove = Vector3.back * _Movement.walkSpeed;
+            rightMove = Vector3.back * walkSpeed;
             Player.Move(rightMove * Time.deltaTime);
 
             yield return null; // Wait for the next frame
@@ -202,14 +210,16 @@ public class SamTests
         //yield return new WaitForEndOfFrame();
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
-        var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+        float walkSpeed = _PlayerStats.GetSpeed();
 
         // Get the initial position of the player
         float initialPosZ = Player.transform.position.z;
         float finalPosZ = 0;
 
         // Set custom moveDirection to simulate leftward movement
-        Vector3 rightMove = Vector3.forward * _Movement.walkSpeed;
+        Vector3 rightMove = Vector3.forward * walkSpeed;
         Vector3 currentPos = Player.transform.position;
 
         // Simulate 10000 frames
@@ -219,17 +229,17 @@ public class SamTests
             Player.transform.position = currentPos;
             yield return new WaitForSeconds(0.05f);
 
-            _Movement.walkSpeed += 50000f;
+            walkSpeed += 50000f;
 
             //for (int j = 0; j < 1000; j++)
             //{
                 // Move player with updated speed to the left
-                rightMove = Vector3.forward * _Movement.walkSpeed;
+                rightMove = Vector3.forward * walkSpeed;
                 Player.Move(rightMove * Time.deltaTime);
 
                 finalPosZ = Player.transform.position.z;
                 if (finalPosZ > 80) // boundary
-                    Assert.Pass("The player moved from " + initialPosZ + " to" + finalPosZ + " at speed " + _Movement.walkSpeed);
+                    Assert.Pass("The player moved from " + initialPosZ + " to" + finalPosZ + " at speed " + walkSpeed);
             //}
 
             yield return null; // Wait for the next frame

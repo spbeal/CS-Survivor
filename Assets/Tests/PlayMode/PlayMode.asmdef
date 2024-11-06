@@ -9,7 +9,8 @@
         "Exp",
         "GunAssemblyDef",
         "ZacAssemblyDef",
-        "Lights"
+        "Lights",
+        "PlayerStats"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

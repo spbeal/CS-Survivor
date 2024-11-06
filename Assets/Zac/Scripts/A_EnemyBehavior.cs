@@ -16,7 +16,7 @@ public class A_EnemyBehavior : EnemyBehavior
             Rigidbody playerRb = player.GetComponent<Rigidbody>();
             if (playerRb != null)
             {
-                Vector3 pushDirection = (player.position - transform.position).normalized;
+                Vector3 pushDirection = (playerPosition.position - transform.position).normalized;
                 playerRb.AddForce(pushDirection * pushBackForce, ForceMode.Impulse);
             }
         }

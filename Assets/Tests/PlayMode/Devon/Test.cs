@@ -48,6 +48,9 @@ public class Test
 
         var Player = GameObject.Find("Player").GetComponent<CharacterController>();
         var _Movement = GameObject.Find("Player").GetComponent<Movement>();
+        var _PlayerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+        float walkSpeed = _PlayerStats.GetSpeed();
 
         // Get the initial position of the player
 		float initialPosX = Player.transform.position.x;
@@ -73,7 +76,7 @@ public class Test
 
             finalPosY = Player.transform.position.y;
             if (finalPosY < -20 || finalPosX < -20) // boundary
-                Assert.Pass("The player moved from " + initialPosY + " to" + finalPosY + " at speed " + _Movement.walkSpeed);
+                Assert.Pass("The player moved from " + initialPosY + " to" + finalPosY + " at speed " + walkSpeed);
 
             yield return null; // Wait for the next frame
         }

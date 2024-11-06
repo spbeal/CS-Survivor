@@ -42,9 +42,8 @@ public class Movement : MonoBehaviour
 	[SerializeField]
 	private Camera playerCamera;
 
-    [SerializeField]
-	public float walkSpeed = 10f;
-	//Me change this to public
+	private PlayerStats playerStats;
+	//Me change this to public  walkSpeed
 	
 	[SerializeField]
 	private float lookSpeed = 7f;
@@ -75,6 +74,8 @@ public class Movement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
+
+		playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -83,6 +84,8 @@ public class Movement : MonoBehaviour
 		// Sets up directional movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 		Vector3 right = transform.TransformDirection(Vector3.right);
+
+		float walkSpeed = playerStats.GetSpeed();
 		
 		float speedX = walkSpeed * Input.GetAxis("Vertical");
 		float speedY = walkSpeed * Input.GetAxis("Horizontal");

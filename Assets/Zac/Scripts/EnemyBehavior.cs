@@ -7,7 +7,8 @@ public class EnemyBehavior : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player;
+    public Transform playerPosition;
+    public GameObject player;
     public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
@@ -33,7 +34,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player");
+        playerPosition = player.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -93,7 +95,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.SetDestination(playerPosition.position);
     }
 
     private void AttackPlayer()
@@ -102,7 +104,7 @@ public class EnemyBehavior : MonoBehaviour
         agent.SetDestination(transform.position);
 
         // Look at the player
-        transform.LookAt(player);
+        transform.LookAt(playerPosition);
 
         if (!alreadyAttacked)
         {
@@ -119,7 +121,7 @@ public class EnemyBehavior : MonoBehaviour
         StartCoroutine(MeleeAttack());
     }
 
-
+    
     private IEnumerator MeleeAttack()
     {
         yield return new WaitForSeconds(attackDelay); // Optional delay before hit lands
@@ -127,10 +129,10 @@ public class EnemyBehavior : MonoBehaviour
         // If player is still within attack range, deal damage
         if (playerInAttackRange)
         {
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            PlayerStats playerStats = player.GetComponent<PlayerStats>();
+            if (playerStats != null)
             {
-                playerHealth.TakeDamage(meleeDamage); // Reduce player's health
+                playerStats.TakeDamage(meleeDamage); // Reduce player's health
                 Debug.Log("Enemy dealt " + meleeDamage + " damage to the player.");
             }
         }
