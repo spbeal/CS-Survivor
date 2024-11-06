@@ -21,7 +21,7 @@ jobs:
           restore-keys: |
             Library-
 
-      # Test
+      # Run playmode tests
       - name: Run playmode tests
         uses: game-ci/unity-test-runner@v4
         env:
@@ -30,10 +30,10 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          testMode: playmode # Specify test mode here (playmode or editmode)
-          #customParameters: '-testResults TestResults.xml'
-          
-      # Test
+          testMode: playmode
+          customParameters: '-testResults TestResults_PlayMode.xml'
+      
+      # Run editmode tests
       - name: Run editmode tests
         uses: game-ci/unity-test-runner@v4
         env:
@@ -42,29 +42,19 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          testMode: editmode # Specify test mode here (playmode or editmode)
-          #customParameters: '-testResults TestResults.xml'
-          
-      # Upload test results
-      - name: Upload test results
+          testMode: editmode
+          customParameters: '-testResults TestResults_EditMode.xml'
+
+      # Upload playmode test results
+      - name: Upload playmode test results
         uses: actions/upload-artifact@v3
         with:
-          name: TestResults
-          path: TestResults.xml
+          name: PlayModeTestResults
+          path: TestResults_PlayMode.xml
 
-      # # Build
-      # - name: Build project
-      #   uses: game-ci/unity-builder@v4
-      #   env:
-      #     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-      #     UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-      #     UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-      #   with:
-      #     targetPlatform: WebGL
-
-      # # Output build artifact
-      # - name: Upload build
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: Build
-      #     path: build
+      # Upload editmode test results
+      - name: Upload editmode test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: EditModeTestResults
+          path: TestResults_EditMode.xml
