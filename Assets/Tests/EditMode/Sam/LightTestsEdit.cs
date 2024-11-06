@@ -23,7 +23,7 @@ public class SamEditLightTests
         sceneLoaded = true;
     }*/
 
-    /*        
+    /*         
      *        Following does not work, create a typical instant since they aren't derived from monobehavior
      *        MyClass myInstance = new MyClass();
     var Light = GameObject.Find("LightManager").GetComponent<Lights>();

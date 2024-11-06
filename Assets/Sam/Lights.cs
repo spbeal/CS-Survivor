@@ -210,3 +210,16 @@ public class WhiteLight : SingleLight
         }
     }
 }
+/* 
+    IEnumerator WaitAndPrint()
+    {
+        Debug.Log("Starting coroutine, waiting 3 seconds...");
+        
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(3);
+        
+        Debug.Log("3 seconds passed!");
+        
+        // Add other actions here after the wait
+    }
+*/
