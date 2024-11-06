@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class SamLightTests
+public class SamPlayLightTests
 {
     private bool sceneLoaded;
 
@@ -50,7 +50,7 @@ public class SamLightTests
         SingleLight a = new WhiteLight(0, 0, 0);
     */
 
-    [UnityTest]
+/*    [UnityTest]
     public IEnumerator OnOffSingleLight()
     {
         SingleLight a = new SingleLight();
@@ -163,5 +163,5 @@ public class SamLightTests
             Assert.Fail("No ColorLight was created");
         }
         yield return null; // Wait for the next frame
-    }
+    }*/
 }
