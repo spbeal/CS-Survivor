@@ -9,6 +9,13 @@ TagManager:
   - Terrain
   - BasicEnemy
   - AdvancedEnemy
+  - Buy_Booberry
+  - Buy_PC
+  - Buy_VideaGames
+  - Buy_Soda
+  - Buy_Aries
+  - Buy_C_Book
+  - Buy_Shotgun
   layers:
   - Default
   - TransparentFX

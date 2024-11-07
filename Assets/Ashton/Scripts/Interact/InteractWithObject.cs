@@ -6,7 +6,6 @@ public class InteractWithObject : MonoBehaviour
 {
     public float interactionRange = 2.0f;
     private Transform player;
-    private bool isPlayerInRange = false;
 
     [SerializeField] private GameObject UpgradeShopMenuObject;
     [SerializeField] private GameObject WeaponShopMenuObject;
@@ -21,15 +20,10 @@ public class InteractWithObject : MonoBehaviour
     {
         if (Vector3.Distance(player.position, transform.position) <= interactionRange)
         {
-            isPlayerInRange = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Interact();
             }
-        }
-        else
-        {
-            isPlayerInRange = false;
         }
     }
 
