@@ -23,14 +23,23 @@ public class PauseFacade : MonoBehaviour
     [SerializeField]
     private Button ControlsButton;
 
+    [SerializeField]
+    private Button ResetButton;
+
+    [SerializeField]
+    private GameManager gm;
+
+
     // Start is called before the first frame update
     void Start()
     {
         ResumeGame(); // game starts UNPAUSED and the dog hides
         Debug.Log("hi chat");
 
+
         PlayButton.onClick.AddListener(ResumeGame);
         ControlsButton.onClick.AddListener(ShowControls);
+        ResetButton.onClick.AddListener(ResetGame);
     }
 
     // Update is called once per frame
@@ -63,6 +72,12 @@ public class PauseFacade : MonoBehaviour
     public void ShowControls()
     {
         ControlsMenuObject.SetActive(true);
+    }
+
+    public void ResetGame()
+    {
+        Debug.Log("we tried ok");
+        gm.RestartGame("MinimumViableProduct");
     }
 }
 

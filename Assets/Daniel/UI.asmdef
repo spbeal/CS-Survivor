@@ -1,3 +1,16 @@
 {
-	"name": "MenuManager"
+    "name": "MenuManager",
+    "rootNamespace": "",
+    "references": [
+        "GUID:395342e73c03f604288e7cbba97972e0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
