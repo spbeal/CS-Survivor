@@ -19,15 +19,6 @@ public class Lights : MonoBehaviour
         //light_system.Update_SingleLights();
     }
 
-/*    SingleLight TestLightFactory(string lightType, int x, int y, int z, Color? color = null)
-    {
-        LightFactory a;
-        a.CreateLight(lightType, x, y, z, color);
-    }*/
-/*    void TestLightSystem()
-    {
-        LightSystem a;
-    }*/
 }
 
 
