@@ -107,5 +107,10 @@ public class PlayerStats : MonoBehaviour
         _gold = newGold;
     }
 
+    public void AddGold(int moreGold)
+    {
+        _gold += moreGold;
+    }
+
 
 }

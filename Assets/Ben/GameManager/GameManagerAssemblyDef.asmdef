@@ -2,7 +2,8 @@
     "name": "GameManagerAssemblyDef",
     "rootNamespace": "",
     "references": [
-        "Lights"
+        "Lights",
+        "PlayerStats"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
