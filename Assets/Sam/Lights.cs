@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     // Initalize vars
-    public LightSystem light_system;
+    private LightSystem light_system;
 
     void Start()
     {
@@ -97,9 +97,9 @@ public class LightSystem
 
 public class SingleLight
 {
-    public GameObject lightGameObject;
-    public Light lightComp;
-    public float duration = 1.0f;
+    private GameObject lightGameObject;
+    protected Light lightComp;
+    protected float duration = 1.0f;
 
     public SingleLight()
     {
