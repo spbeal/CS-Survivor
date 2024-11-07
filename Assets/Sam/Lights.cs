@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lights : MonoBehaviour
 {
     // Initalize vars
-    private LightSystem light_system;
+    public LightSystem light_system;
 
     void Start()
     {
