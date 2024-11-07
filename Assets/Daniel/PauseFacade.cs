@@ -7,6 +7,9 @@ public class PauseFacade : MonoBehaviour
 {
     [SerializeField]
     private GameObject PauseMenuObject;
+
+    [SerializeField]
+    private GameObject ControlsMenuObject;
     /*
     [SerializeField]
     private GameObject SkillMenuObject;
@@ -17,6 +20,9 @@ public class PauseFacade : MonoBehaviour
     [SerializeField]
     public Button PlayButton;
 
+    [SerializeField]
+    private Button ControlsButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +30,7 @@ public class PauseFacade : MonoBehaviour
         Debug.Log("hi chat");
 
         PlayButton.onClick.AddListener(ResumeGame);
+        ControlsButton.onClick.AddListener(ShowControls);
     }
 
     // Update is called once per frame
@@ -46,10 +53,16 @@ public class PauseFacade : MonoBehaviour
 
     public void ResumeGame(){
         Time.timeScale = 1;
+        ControlsMenuObject.SetActive(false);
         PauseMenuObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Debug.Log("resumed");
+    }
+
+    public void ShowControls()
+    {
+        ControlsMenuObject.SetActive(true);
     }
 }
 
