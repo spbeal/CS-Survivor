@@ -25,6 +25,7 @@ public class PlayerStats : MonoBehaviour
         _currentHealth = _maxHealth; // Initialize health
     }
 
+    // makes the player take the given damage and checks if that makes them go into negative values of health (meaning they should die and the game should end)
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
@@ -36,10 +37,19 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    // meant to be used when using a health pack that you should get from bolden's buff shop that refills your health
+    public void ResetHealth(){
+        _currentHealth = _maxHealth;
+    }
+
+    // kills the player and displays the lose screen
     private void Die()
     {
         Debug.Log("Player has died!");
-        gameObject.SetActive(false); // Disable player object
+        // display the death screen here with the button that will call the Game Manager's RestartGame function
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 
