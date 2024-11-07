@@ -1,0 +1,26 @@
+BasicEnemy.prefab.README
+--------------------------------------
+Contents:
+-Enemy Object
+-Enemy Template/Texture
+-Enemy Behavior
+-Nav Mesh
+-Box Collider
+-Rigidbody
+--------------------------------------
+Enemy Behavior:
+-Movement (Speed)
+-Chasing
+-Patrolling
+-Attacking
+-Player Locating
+-Health
+-Damage
+-------------------------------------
+Nav Mesh:
+-Navigational component so that the enemies AI can
+ move about the environment, also evade and move around obstacles
+-------------------------------------
+Collider/Rigidbody:
+-Necessary components for enemy-map-player physical interactions
+ also contains necessary tags for certains methods to work such as the gun system
