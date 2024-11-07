@@ -108,7 +108,7 @@ public class Movement : MonoBehaviour
 		characterController.Move(moveDirection * Time.deltaTime);
 		
 		//Dynamic binding
-		object1.printDir();
+		//object1.printDir();
 		
 		
 	}

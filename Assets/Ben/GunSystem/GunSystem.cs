@@ -36,6 +36,8 @@ public class GunSystem : MonoBehaviour
     // Dynamic binding objects setup
     private gunNotFiring checkGunFireObjectSub = new gunFiring();
     private gunNotFiring checkGunFireObjectSuper = new gunNotFiring();
+    [SerializeField]
+    private bool checkForGunFiringOnOrOff = false;
 
     void Awake()
     {
@@ -48,10 +50,10 @@ public class GunSystem : MonoBehaviour
         MyInput();
 
         // Demonstration of Dynamic binding using the objects defined above
-        if(shooting){
+        if( shooting && checkForGunFiringOnOrOff ){
             // calls the override version of the printGunFire function in the subclass
             checkGunFireObjectSub.printGunFire();
-        }else{
+        }else if( checkForGunFiringOnOrOff ){
             // calls the virtual version of the printGunFire function in the superclass
             checkGunFireObjectSuper.printGunFire();
         }

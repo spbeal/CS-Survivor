@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1448414101478400454}
   - component: {fileID: 1652981108818464913}
   - component: {fileID: -2107720660770182781}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AdvancedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  playerPosition: {fileID: 0}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2

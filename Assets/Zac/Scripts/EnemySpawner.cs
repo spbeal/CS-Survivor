@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints; // Array to hold spawn points
     private EnemyFactory enemyFactory; // Reference to the enemy factory
 
-    private int currentRound = 1; // Start at round 1
+    public int currentRound = 1; // Start at round 1
     private int maxRounds = 5; // Limit to 5 rounds
     public int enemiesPerRound = 3; // Number of enemies to spawn per round *NOTE* This should probably be private but is public for the sake of testing*
 
@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         // Initialize the enemy factory
         enemyFactory = new EnemyFactory();
     }
-
+/*
     private void Update()
     {
         // Check for input to start a new round (Enter key)
@@ -37,8 +37,8 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy(enemyType);
         }
     }
-
-    private string GetWeightedEnemyType(int round)
+*/
+    public string GetWeightedEnemyType(int round)
     {
         // Adjust the weighting based on the round number
         float randomValue = Random.value;

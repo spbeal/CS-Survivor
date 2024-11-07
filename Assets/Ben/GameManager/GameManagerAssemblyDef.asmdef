@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "Lights",
-        "PlayerStats"
+        "PlayerStats",
+        "ZacAssemblyDef"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
