@@ -16,7 +16,7 @@ public class Lights : MonoBehaviour
 
     void Update()
     {
-        light_system.Update_SingleLights();
+        //light_system.Update_SingleLights();
     }
 
 /*    SingleLight TestLightFactory(string lightType, int x, int y, int z, Color? color = null)
@@ -83,11 +83,12 @@ public class LightSystem
             light_list.Add(lightFactory.CreateLight("ColorLight",  (-i * 15), 7, 22, Color.white));
         }
     }
-    public void Update_SingleLights()
+
+    public void Update_SingleLights(bool inputOn, bool inputEffect)
     {
         foreach (var light in light_list)
         {
-            light.UpdateLight();
+            light.UpdateLight(inputOn, inputEffect);
         }
     }
 
@@ -134,11 +135,15 @@ public class SingleLight
         //public lightComp = lightGameObject.AddComponent<Light>();
     }
 
-    public virtual void UpdateLight()
+    public virtual void UpdateLight(bool inputOn, bool inputEffect)
     {
-        if (Input.GetKeyUp(KeyCode.L))
+        if (inputOn)
         {
-            lightComp.enabled = !lightComp.enabled;
+            lightComp.enabled = true;
+        }
+        else
+        {
+            lightComp.enabled = false;
         }
     }
     //virtual public void 
@@ -159,14 +164,18 @@ public class ColorLight : SingleLight
         lightComp.color = color;
     }
 
-    public override void UpdateLight()
+    public override void UpdateLight(bool inputOn, bool inputEffect)
     {
-        base.UpdateLight();
+        base.UpdateLight(inputOn, inputEffect);
 
         // Toggle flashing mode with 'K' key
-        if (Input.GetKeyUp(KeyCode.K))
+        if (inputEffect)
         {
-            isFlashing = !isFlashing;
+            isFlashing = true;
+        }
+        else
+        {
+            isFlashing = false;
         }
 
         if (isFlashing)
@@ -189,13 +198,17 @@ public class WhiteLight : SingleLight
         lightComp.color = Color.white;
     }
 
-    public override void UpdateLight()
+    public override void UpdateLight(bool inputOn, bool inputEffect)
     {
-        base.UpdateLight();
+        base.UpdateLight(inputOn, inputEffect);
 
-        if (Input.GetKeyUp(KeyCode.J))
+        if (inputEffect)
         {
-            isIntensify = !isIntensify;
+            isIntensify = true;
+        }
+        else
+        {
+            isIntensify = false;
         }
 
         if (isIntensify)
