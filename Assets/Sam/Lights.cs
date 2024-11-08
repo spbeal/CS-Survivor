@@ -82,6 +82,10 @@ public class LightSystem
             light.UpdateLight(inputOn, inputEffect);
         }
     }
+    public Light GetLightComp(SingleLight a)
+    {
+        return a.get_light_comp();
+    }
 
     // Additional testing
     public List<SingleLight> GetAllLights()
@@ -100,6 +104,11 @@ public class SingleLight
     private GameObject lightGameObject;
     protected Light lightComp;
     protected float duration = 1.0f;
+
+    public Light get_light_comp()
+    {
+        return lightComp;
+    }
 
     public SingleLight()
     {
@@ -124,6 +133,11 @@ public class SingleLight
     {
         //public lightGameObject = new GameObject("SingleLight");
         //public lightComp = lightGameObject.AddComponent<Light>();
+    }
+
+    public virtual bool GetEffect()
+    {
+        return false;
     }
 
     public virtual void UpdateLight(bool inputOn, bool inputEffect)
@@ -153,6 +167,11 @@ public class ColorLight : SingleLight
     public ColorLight(int x, int y, int z, Color color) : base(x, y, z)
     {
         lightComp.color = color;
+    }
+
+    public override bool GetEffect()
+    {
+        return isFlashing;
     }
 
     public override void UpdateLight(bool inputOn, bool inputEffect)
@@ -187,6 +206,11 @@ public class WhiteLight : SingleLight
     public WhiteLight(int x, int y, int z) : base(x, y, z)
     {
         lightComp.color = Color.white;
+    }
+
+    public override bool GetEffect()
+    {
+        return isIntensify;
     }
 
     public override void UpdateLight(bool inputOn, bool inputEffect)

@@ -3,6 +3,8 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
 
 public class SamPlayLightTests
 {
@@ -20,16 +22,11 @@ public class SamPlayLightTests
         sceneLoaded = true;
     }
 
-    /*        
-     *        Following does not work, create a typical instant since they aren't derived from monobehavior
-     *        MyClass myInstance = new MyClass();
-    var Light = GameObject.Find("LightManager").GetComponent<Lights>();
-    var LightFactorys = GameObject.Find("LightManager").GetComponent<LightFactory>();
-    var LightSystems = GameObject.Find("LightManager").GetComponent<LightSystem>();
-    var LightSingle = GameObject.Find("LightManager").GetComponent<SingleLight>();
-    var LightColor = GameObject.Find("LightManager").GetComponent<ColorLight>();
-    var LightWhite = GameObject.Find("LightManager").GetComponent<WhiteLight>();
-    */
+    public static float GetCurrentFPS()
+    {
+        return 1.0f / Time.unscaledDeltaTime;
+    }
+
 
     // Create an object of each class and test if they exist
     // Create lights and turn them on and off
@@ -50,118 +47,210 @@ public class SamPlayLightTests
         SingleLight a = new WhiteLight(0, 0, 0);
     */
 
-/*    [UnityTest]
-    public IEnumerator OnOffSingleLight()
-    {
-        SingleLight a = new SingleLight();
-        //if (a.enabled)
-        Assert.Pass("One SingleLight was created");
-        Assert.Fail("No SingleLight was created");
-        yield return null; // Wait for the next frame
-    }
-    [UnityTest]
-    public IEnumerator OnOffWhiteLight()
-    {
-        Assert.Pass("One SingleLight was created");
-
-        yield return null; // Wait for the next frame
-    }
-    [UnityTest]
-    public IEnumerator OnOffColorLight()
-    {
-        Assert.Pass("One SingleLight was created");
-
-        yield return null; // Wait for the next frame
-    }
-
-    // Create Lights
-    [UnityTest]
-    public IEnumerator CreateSingleLight()
-    {
-        SingleLight a = new SingleLight();
-        if (a != null)
-        {
-            Assert.Pass("One SingleLight was created");
-        }
-        else
-        {
-            Assert.Fail("No SingleLight was created");
-        }
-        yield return null; // Wait for the next frame
-    }
 
     [UnityTest]
-    public IEnumerator CreateWhiteLight()
+    public IEnumerator FlickerEffectsAndLights()
     {
-        SingleLight a = new WhiteLight(0,0,0);
-        if (a != null)
-        {
-            Assert.Pass("One WhiteLight was created");
-        }
-        else
-        {
-            Assert.Fail("No WhiteLight was created");
-        }
-        yield return null; // Wait for the next frame
-    }
+        LightSystem a = new LightSystem();
+        a.Init();
 
-    [UnityTest]
-    public IEnumerator CreateColorLight()
-    {
-        SingleLight a = new ColorLight(0, 0, 0, Color.red);
-        if (a != null)
-        {
-            Assert.Pass("One ColorLight was created");
-        }
-        else
-        {
-            Assert.Fail("No ColorLight was created");
-        }
-        yield return null; // Wait for the next frame
-    }
+        bool LightOn = false;
+        bool EffectOn = false;
 
-    [UnityTest]
-    public IEnumerator FactoryCreateSingleLight()
-    {
-        LightFactory a = new LightFactory();
-        if (a.CreateLight("SingleLight", 0, 0, 0) != null)
+        for (int i = 0; i < 10; i++)
         {
-            Assert.Pass("One SingleLight was created");
+            a.Init();
         }
-        else
+        List<SingleLight> lights = a.GetAllLights();
+
+        for (int i = 0; i < 100; i++)
         {
-            Assert.Fail("No SingleLight was created");
+            a.Update_SingleLights(false, false);
+            foreach (SingleLight lightobj in lights)
+            {
+                if (lightobj.GetEffect())
+                {
+                    EffectOn = true;
+                    break;
+                }
+                else
+                {
+                    EffectOn = false;
+                }
+
+                Light tmp = a.GetLightComp(lightobj);
+                if (tmp.enabled)
+                {
+                    LightOn = true;
+                    break;
+                }
+                else
+                {
+                    LightOn = false;
+                }
+            }
+
+            if (LightOn == true || EffectOn == true)
+            {
+                Assert.Fail("Failed. Number of lights: " + lights.Count + "After " + i + " frames");
+            }
+
+            a.Update_SingleLights(true, true);
+            foreach (SingleLight lightobj in lights)
+            {
+                if (lightobj.GetEffect())
+                {
+                    EffectOn = true;
+                }
+                else
+                {
+                    EffectOn = false;
+                    break;
+                }
+
+                Light tmp = a.GetLightComp(lightobj);
+                if (tmp.enabled)
+                {
+                    LightOn = true;
+                }
+                else
+                {
+                    LightOn = false;
+                    break;
+                }
+            }
+
+            if (LightOn == false || EffectOn == false)
+            {
+                Assert.Fail("Failed. Number of lights: " + lights.Count + "After " + i + " frames");
+            }
         }
+        Assert.Pass("Everything worked properly with a large number of lights turning both the lights and effects on and off");
+
         yield return null; // Wait for the next frame
     }
 
     [UnityTest]
-    public IEnumerator FactoryCreateWhiteLight()
+    public IEnumerator FlickerEffects()
     {
-        LightFactory a = new LightFactory();
-        if (a.CreateLight("WhiteLight", 0, 0, 0) != null)
+        LightSystem a = new LightSystem();
+        a.Init();
+
+        bool LightOn = false;
+        bool EffectOn = false;
+
+        for (int i = 0; i < 10; i++)
         {
-            Assert.Pass("One WhiteLight was created");
+            a.Init();
         }
-        else
+        List<SingleLight> lights = a.GetAllLights();
+
+        for (int i = 0; i < 100; i++)
         {
-            Assert.Fail("No WhiteLight was created");
+            a.Update_SingleLights(true, false);
+            foreach (SingleLight lightobj in lights)
+            {
+                if (lightobj.GetEffect())
+                {
+                    EffectOn = true;
+                    break;
+                }
+                else
+                {
+                    EffectOn = false;
+                }
+            }
+
+            if (EffectOn == true)
+            {
+                Assert.Fail("Failed. Number of lights: " + lights.Count + "After " + i + " frames");
+            }
+
+            a.Update_SingleLights(true, true);
+            foreach (SingleLight lightobj in lights)
+            {
+                if (lightobj.GetEffect())
+                {
+                    EffectOn = true;
+                }
+                else
+                {
+                    EffectOn = false;
+                    break;
+                }
+            }
+
+            if (EffectOn == false)
+            {
+                Assert.Fail("Failed. Number of lights: " + lights.Count + "After " + i + " frames");
+            }
         }
+        Assert.Pass("Everything worked properly with a large number of lights turning the effects on and off");
+
         yield return null; // Wait for the next frame
     }
 
     [UnityTest]
-    public IEnumerator FactoryCreateColorLight()
+    public IEnumerator FlickerLights()
     {
-        LightFactory a = new LightFactory();
-        if (a.CreateLight("ColorLight", 0, 0, 0, Color.red) != null)
+        LightSystem a = new LightSystem();
+        a.Init();
+
+        bool LightOn = false;
+        bool EffectOn = false;
+
+        for (int i = 0; i < 10; i++)
         {
-            Assert.Pass("One ColorLight was created");
+            a.Init();
         }
-        else
+        List<SingleLight> lights = a.GetAllLights();
+        for (int i = 0; i < 100; i++)
         {
-            Assert.Fail("No ColorLight was created");
+            a.Update_SingleLights(false, false);
+            foreach (SingleLight lightobj in lights)
+            {
+                Light tmp = a.GetLightComp(lightobj);
+                if (tmp.enabled)
+                {
+                    LightOn = true;
+                    break;
+                }
+                else
+                {
+                    LightOn = false;
+                }
+            }
+
+            if (LightOn == true)
+            {
+                Assert.Fail("Failed. Number of lights: " + lights.Count + "After " + i + " frames");
+            }
+
+            a.Update_SingleLights(true, false);
+            foreach (SingleLight lightobj in lights)
+            {
+
+                Light tmp = a.GetLightComp(lightobj);
+                if (tmp.enabled)
+                {
+                    LightOn = true;
+                }
+                else
+                {
+                    LightOn = false;
+                    break;
+                }
+            }
+
+            if (LightOn == false)
+            {
+                Assert.Fail("Failed. Number of lights: " + lights.Count + "After " + i + " frames");
+            }
         }
+        Assert.Pass("Everything worked properly with a large number of lights turning them on and off");
+
         yield return null; // Wait for the next frame
-    }*/
+    }
+
+
 }

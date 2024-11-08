@@ -3,6 +3,7 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 
 //[TestFixture]
@@ -26,26 +27,140 @@ public class SamEditLightTests
         SingleLight a = new WhiteLight(0, 0, 0);
     */
 
+
     [UnityTest]
-    public IEnumerator OnOffSingleLight()
+    public IEnumerator LightOffEffectOff()
     {
-        SingleLight a = new SingleLight();
-        //if (a.enabled)
-        Assert.Pass("One SingleLight was created");
-        Assert.Fail("No SingleLight was created");
-        yield return null; // Wait for the next frame
-    }
-    [UnityTest]
-    public IEnumerator OnOffWhiteLight()
-    {
-        Assert.Pass("One SingleLight was created");
+        LightSystem a = new LightSystem();
+        a.Init();
+        a.Update_SingleLights(false, false);
+        List<SingleLight> lights = a.GetAllLights();
+
+        bool LightOn = false;
+        bool EffectOn = false;
+        foreach (SingleLight lightobj in lights)
+        {
+            if (lightobj.GetEffect())
+            {
+                EffectOn = true;
+                break;
+            }
+            else
+            {
+                EffectOn = false;
+            }
+
+            Light tmp = a.GetLightComp(lightobj);
+            if (tmp.enabled)
+            {
+                LightOn = true;
+                break;
+            }
+            else
+            {
+                LightOn = false;
+            }
+        }
+
+        if (LightOn == false && EffectOn == false)
+        {
+            Assert.Pass("Effect is off and light is off");
+        }
+        else
+        {
+            Assert.Fail("Error");
+        }
 
         yield return null; // Wait for the next frame
     }
     [UnityTest]
-    public IEnumerator OnOffColorLight()
+    public IEnumerator LightOnEffectOff()
     {
-        Assert.Pass("One SingleLight was created");
+        LightSystem a = new LightSystem();
+        a.Init();
+        a.Update_SingleLights(true, false);
+        List<SingleLight> lights = a.GetAllLights();
+
+        bool LightOn = true;
+        bool EffectOn = false;
+        foreach (SingleLight lightobj in lights)
+        {
+            if (lightobj.GetEffect())
+            {
+                EffectOn = true;
+                break;
+            }
+            else
+            {
+                EffectOn = false;
+            }
+
+            Light tmp = a.GetLightComp(lightobj);
+            if (tmp.enabled)
+            {
+                LightOn = true;
+            }
+            else
+            {
+                LightOn = false;
+                break;
+            }
+        }
+
+        if(LightOn && EffectOn == false)
+        {
+            Assert.Pass("Effect is off and light is on");
+        }
+        else
+        {
+            Assert.Fail("Error");
+        }
+
+        yield return null; // Wait for the next frame
+    }
+    [UnityTest]
+    public IEnumerator LightOnEffectOn()
+    {
+        LightSystem a = new LightSystem();
+        a.Init();
+        a.Update_SingleLights(true, true);
+        List<SingleLight> lights = a.GetAllLights();
+
+        bool LightOn = true;
+        bool EffectOn = true;
+        foreach (SingleLight lightobj in lights)
+        {
+
+            if (lightobj.GetEffect())
+            {
+                EffectOn = true;
+            }
+            else
+            {
+                EffectOn = false;
+                break;
+            }
+
+            Light tmp = a.GetLightComp(lightobj);
+            if (tmp.enabled)
+            {
+                LightOn = true;
+            }
+            else
+            {
+                LightOn = false;
+                break;
+            }
+        }
+
+        if (LightOn && EffectOn)
+        {
+            Assert.Pass("Effect is on and light is on");
+        }
+        else
+        {
+            Assert.Fail("Error");
+        }
 
         yield return null; // Wait for the next frame
     }
