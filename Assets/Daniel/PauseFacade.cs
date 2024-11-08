@@ -27,6 +27,9 @@ public class PauseFacade : MonoBehaviour
     private Button ResetButton;
 
     [SerializeField]
+    private Button BCModeButton;
+
+    [SerializeField]
     private GameManager gm;
 
 
@@ -40,6 +43,7 @@ public class PauseFacade : MonoBehaviour
         PlayButton.onClick.AddListener(ResumeGame);
         ControlsButton.onClick.AddListener(ShowControls);
         ResetButton.onClick.AddListener(ResetGame);
+        BCModeButton.onClick.AddListener(StartBC);
     }
 
     // Update is called once per frame
@@ -78,6 +82,12 @@ public class PauseFacade : MonoBehaviour
     {
         Debug.Log("we tried ok");
         gm.RestartGame("MinimumViableProduct");
+    }
+
+    public void StartBC()
+    {
+        Debug.Log("starting in BC mode...");
+        // I have no idea what to do here
     }
 }
 
