@@ -9,47 +9,20 @@ using UnityEngine.SceneManagement;
 //[UnityPlatform(exclude = new[] { RuntimePlatform.WindowsEditor })] // Exclude Play Mode if running in Edit Mode only
 public class SamEditLightTests
 {
-/*    private bool sceneLoaded;
-
-    [OneTimeSetUp]
-    public void OneTimeSetup()
-    {
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-        SceneManager.LoadScene("Main/MinimumViableProduct", LoadSceneMode.Single);
-    }
-
-    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        sceneLoaded = true;
-    }*/
-
-    /*         
-     *        Following does not work, create a typical instant since they aren't derived from monobehavior
-     *        MyClass myInstance = new MyClass();
-    var Light = GameObject.Find("LightManager").GetComponent<Lights>();
-    var LightFactorys = GameObject.Find("LightManager").GetComponent<LightFactory>();
-    var LightSystems = GameObject.Find("LightManager").GetComponent<LightSystem>();
-    var LightSingle = GameObject.Find("LightManager").GetComponent<SingleLight>();
-    var LightColor = GameObject.Find("LightManager").GetComponent<ColorLight>();
-    var LightWhite = GameObject.Find("LightManager").GetComponent<WhiteLight>();
-    */
-
     // Create an object of each class and test if they exist
     // Create lights and turn them on and off
     // Create lights and stress test for flickering (Color, White, and Single Light
     // Create lightsystems until it breaks the game
 
     // TESTS --------------------------------------
-    /*    LightFactory a = new LightFactory();
+    /*    
+        LightFactory a = new LightFactory();
         LightSystem a = new LightSystem();
 
-        SingleLight a = new SingleLight();
         SingleLight a = new SingleLight(0, 0, 0);
 
-        SingleLight a = new ColorLight();
         SingleLight a = new ColorLight(0, 0, 0, Color.red);
 
-        SingleLight a = new WhiteLight();
         SingleLight a = new WhiteLight(0, 0, 0);
     */
 
