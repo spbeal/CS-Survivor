@@ -3,6 +3,7 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 //Switch between scenes is a great stress test
 
@@ -20,6 +21,30 @@ public class SamTests
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         sceneLoaded = true;
+    }
+
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
+    {
+        // Identify and delete any temporary scenes created during testing
+        string[] scenePaths = AssetDatabase.FindAssets("t:Scene", new[] { "Assets" });
+
+        foreach (string guid in scenePaths)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            if (path.Contains("InitTestScene")) // Adjust to match naming convention
+            {
+                AssetDatabase.DeleteAsset(path);
+                Debug.Log($"Deleted temporary scene: {path}");
+            }
+        }
+
+        // Optionally unload loaded test scenes
+        if (sceneLoaded)
+        {
+            SceneManager.UnloadSceneAsync("Main/MinimumViableProduct");
+            Debug.Log("Unloaded test scene.");
+        }
     }
 
     // Downwards 
@@ -227,9 +252,9 @@ public class SamTests
         {
             currentPos.z = 0.0f;
             Player.transform.position = currentPos;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
 
-            walkSpeed += 50000f;
+            walkSpeed += 100000f;
 
             //for (int j = 0; j < 1000; j++)
             //{

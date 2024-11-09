@@ -75,6 +75,27 @@ public class LightSystem
         }
     }
 
+    public void TestCreate(int i)
+    {
+        for (;  i > 0; i--)
+        {
+            light_list.Add(lightFactory.CreateLight("ColorLight", (-i * 15), 7, 0, Color.white));
+            light_list.Add(lightFactory.CreateLight("WhiteLight", (-i * 15), 0, 22));
+            light_list.Add(lightFactory.CreateLight("ColorLight", (-i * 15), 7, -22, Color.white));
+            light_list.Add(lightFactory.CreateLight("WhiteLight", (-i * 15), 0, -22));
+            light_list.Add(lightFactory.CreateLight("ColorLight", (-i * 15), 7, 22, Color.white));
+        }
+    }
+
+    public void SingleCreateColorLight()
+    {
+        light_list.Add(lightFactory.CreateLight("ColorLight", (1 * 15), 7, 0, Color.white));
+    }
+    public void SingleCreateWhiteLight()
+    {
+        light_list.Add(lightFactory.CreateLight("WhiteLight", (1 * 15), 7, 0, Color.white));
+    }
+
     public void Update_SingleLights(bool inputOn, bool inputEffect)
     {
         foreach (var light in light_list)
@@ -108,6 +129,10 @@ public class SingleLight
     public Light get_light_comp()
     {
         return lightComp;
+    }
+    public GameObject get_light_gobject()
+    {
+        return lightGameObject;
     }
 
     public SingleLight()
