@@ -2929,7 +2929,7 @@ MonoBehaviour:
   PlayButton: {fileID: 428210769}
   ControlsButton: {fileID: 469794868}
   ResetButton: {fileID: 499806772}
-  BCModeButton: {fileID: 0}
+  BCModeButton: {fileID: 1978874121}
   gm: {fileID: 1362001270}
 --- !u!1 &1842570598
 GameObject:
