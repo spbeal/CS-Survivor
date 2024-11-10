@@ -1,0 +1,12 @@
+Map3
+-------------
+General Description:
+this is a map designed for use in a wave shooter with a bunker on one side with shopkeepers in it, and holes in the wall on the other side to let enemies get through.
+-------------
+Contents:
+* Different pieces of the maps model
+* Materials for those pieces
+* Mesh colliders for those pieces
+-------------
+Features:
+* A collision ready map
