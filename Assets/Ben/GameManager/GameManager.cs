@@ -27,12 +27,12 @@ public class GameManager : MonoBehaviour
 
         lightSystem = GameObject.Find("LightManager").GetComponent<Lights>().light_system;
         if(lightSystem == null){
-            Debug.Log("PlayerStats is NULL!");
+            Debug.Log("lightSystem is NULL!");
         }
 
         enemySpawner = GameObject.Find("EnemyManager").GetComponent<EnemySpawner>();
         if(enemySpawner == null){
-            Debug.Log("PlayerStats is NULL!");
+            Debug.Log("enemySpawner is NULL!");
         }
         // spawn a wave of enemies
         SpawnEnemies();
