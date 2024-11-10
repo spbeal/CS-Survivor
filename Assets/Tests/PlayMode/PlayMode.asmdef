@@ -6,11 +6,11 @@
         "MenuManager",
         "UnityEditor.TestRunner",
         "Player",
-        "Exp",
         "GunAssemblyDef",
         "ZacAssemblyDef",
         "Lights",
-        "PlayerStats"
+        "PlayerStats",
+        "Gold"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

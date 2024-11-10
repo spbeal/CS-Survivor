@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpPickup : MonoBehaviour
+public class GoldPickup : MonoBehaviour
 {
 
     // variables
-    private int _expValue;
+    private int _goldValue;
 
     void Start()
     {
-        _expValue = 1;
+        _goldValue = 1;
     }
 
 
@@ -19,15 +19,15 @@ public class ExpPickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            ExpController.instance.GetExp(_expValue);
+            GoldController.instance.GetGold(_goldValue);
 
             Destroy(gameObject);
         }
     }
 
-    public int GetExpValue()
+    public int GetGoldValue()
     {
-        return _expValue;
+        return _goldValue;
     }
 
 }

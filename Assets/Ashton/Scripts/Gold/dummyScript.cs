@@ -21,7 +21,7 @@ public class dummyScript : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                ExpController.instance.SpawnExp(transform.position);
+                GoldController.instance.SpawnGold(transform.position);
             }
             timeLeft = time;
         }

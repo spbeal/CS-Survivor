@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 5373616695046189206}
   - component: {fileID: 2573933121853431853}
   m_Layer: 0
-  m_Name: ExpPickup
+  m_Name: GoldPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

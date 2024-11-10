@@ -61,80 +61,80 @@ public class AshtonTests
     }
 
     [UnityTest]
-    public IEnumerator Test_MinExpPickup()
+    public IEnumerator Test_MinGoldPickup()
     {
         yield return new WaitWhile(() => sceneLoaded == false);
 
         var player = GameObject.FindWithTag("Player");
-        var initialExp = ExpController.instance.GetCurrentExp();
+        var initialGold = GoldController.instance.GetCurrentGold();
 
-        var expPickup = new GameObject("ExpPickup").AddComponent<ExpPickup>();
-//        expPickup._expValue = 0;
+        var GoldPickup = new GameObject("GoldPickup").AddComponent<GoldPickup>();
+//        GoldPickup._GoldValue = 0;
 
-        // Simulate spawning experience at a certain position
+        // Simulate spawning Golderience at a certain position
         Vector3 spawnPosition = new Vector3(0, 0, 0);
-        ExpController.instance.SpawnExp(spawnPosition);
+        GoldController.instance.SpawnGold(spawnPosition);
 
-        expPickup.transform.position = player.transform.position;
+        GoldPickup.transform.position = player.transform.position;
         yield return new WaitForSeconds(0.1f);  // Simulate time for the pickup to be collected
 
-        Assert.AreEqual(initialExp, ExpController.instance.GetCurrentExp(), "Exp value should remain the same when picking up 0 EXP.");
+        Assert.AreEqual(initialGold, GoldController.instance.GetCurrentGold(), "Gold value should remain the same when picking up 0 Gold.");
     }
 
 
     [UnityTest]
-    public IEnumerator Test_ExpSpawning()
+    public IEnumerator Test_GoldSpawning()
     {
         yield return new WaitWhile(() => sceneLoaded == false);
 
-        // Setup the exp prefab manually in the test if needed
-        var expPrefab = new GameObject("ExpPickup").AddComponent<ExpPickup>();
-//        expPrefab._expValue = 10;  // Set a default value for testing
+        // Setup the Gold prefab manually in the test if needed
+        var GoldPrefab = new GameObject("GoldPickup").AddComponent<GoldPickup>();
+//        GoldPrefab._GoldValue = 10;  // Set a default value for testing
 
-        // Ensure the pickup is assigned in the ExpController
-        ExpController.instance.pickup = expPrefab;
+        // Ensure the pickup is assigned in the GoldController
+        GoldController.instance.pickup = GoldPrefab;
 
-        // Simulate spawning experience at a certain position
+        // Simulate spawning Golderience at a certain position
         Vector3 spawnPosition = new Vector3(0, 0, 0);
-        ExpController.instance.SpawnExp(spawnPosition);
+        GoldController.instance.SpawnGold(spawnPosition);
 
-        yield return null; // Wait a frame for the exp to spawn
+        yield return null; // Wait a frame for the Gold to spawn
 
-        // Now we can check if the exp object has actually been instantiated
-        var spawnedExp = GameObject.FindObjectOfType<ExpPickup>();
-        Assert.IsNotNull(spawnedExp, "Experience did not spawn as expected.");
+        // Now we can check if the Gold object has actually been instantiated
+        var spawnedGold = GameObject.FindObjectOfType<GoldPickup>();
+        Assert.IsNotNull(spawnedGold, "Golderience did not spawn as Goldected.");
 
         yield return null;
     }
 
 
     [UnityTest]
-    public IEnumerator Test_StressMultipleExpPickups()
+    public IEnumerator Test_StressMultipleGoldPickups()
     {
         yield return new WaitWhile(() => sceneLoaded == false);
 
-        // Set up the exp prefab manually in the test
-        var expPrefab = new GameObject("ExpPickup").AddComponent<ExpPickup>();
-//        expPrefab._expValue = 10;  // Assign default EXP value for the pickups
+        // Set up the Gold prefab manually in the test
+        var GoldPrefab = new GameObject("GoldPickup").AddComponent<GoldPickup>();
+//        GoldPrefab._GoldValue = 10;  // Assign default Gold value for the pickups
 
-        // Ensure the pickup is assigned in the ExpController
-        ExpController.instance.pickup = expPrefab;
+        // Ensure the pickup is assigned in the GoldController
+        GoldController.instance.pickup = GoldPrefab;
 
-        // Simulate spawning 1000 experience pickups
+        // Simulate spawning 1000 Golderience pickups
         int numPickups = 10000;
         for (int i = 0; i < numPickups; i++)
         {
             Vector3 randomPosition = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));  // Random position for each pickup
-            ExpController.instance.SpawnExp(randomPosition);
+            GoldController.instance.SpawnGold(randomPosition);
         }
 
         yield return null;  // Wait for the pickups to be instantiated
 
-        // Find all the spawned experience pickups
-        var spawnedPickups = GameObject.FindObjectsOfType<ExpPickup>();
+        // Find all the spawned Golderience pickups
+        var spawnedPickups = GameObject.FindObjectsOfType<GoldPickup>();
 
         // Assert that the correct number of pickups were spawned
-        Assert.AreEqual(numPickups, spawnedPickups.Length, "Not all experience pickups were spawned as expected.");
+        Assert.AreEqual(numPickups, spawnedPickups.Length, "Not all Golderience pickups were spawned as Goldected.");
 
         yield return new WaitForSeconds(5f); // Optional wait time for any further interactions or testing
     }
