@@ -13,10 +13,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private float _speed = 10f;
 
-    private int _skillPoints = 0;
-
     [SerializeField]
     private int _gold = 0;
+
+    [SerializeField]
+    private int _goldRate = 0;
 
     public static PlayerStats instance;
     private void Awake()
@@ -69,14 +70,14 @@ public class PlayerStats : MonoBehaviour
         return _speed;
     }
 
-    public int GetSkillPoints()
-    {
-        return _skillPoints;
-    }
-
     public int GetGold()
     {
         return _gold;
+    }
+
+    public int GetGoldRate()
+    {
+        return _goldRate;
     }
 
 
@@ -97,16 +98,19 @@ public class PlayerStats : MonoBehaviour
         _speed = newSpeed;
     }
 
-    public void SetSkillPoints(int newSkillPoints)
-    {
-        _skillPoints = newSkillPoints;
-    }
-
     public void SetGold(int newGold)
     {
         _gold = newGold;
     }
 
+    public void SetGoldRate(int newGoldRate)
+    {
+        _goldRate = newGoldRate;
+    }
+
+
+
+    // methods to add a value to the stats
     public void AddGold(int moreGold)
     {
         _gold += moreGold;

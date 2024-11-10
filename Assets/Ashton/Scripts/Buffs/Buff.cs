@@ -8,11 +8,11 @@ public class Buff
 }
 
 
-public class Health : Buff
+public class HealthBuff : Buff
 {
     private int _healthIncrease;
 
-    public Health(int healthIncrease)
+    public HealthBuff(int healthIncrease)
     {
         _healthIncrease = healthIncrease;
     }
@@ -24,11 +24,11 @@ public class Health : Buff
 }
 
 
-public class Speed : Buff
+public class SpeedBuff : Buff
 {
     private int _speedIncrease;
 
-    public Speed(int speedIncrease)
+    public SpeedBuff(int speedIncrease)
     {
         _speedIncrease = speedIncrease;
     }
@@ -38,5 +38,23 @@ public class Speed : Buff
         playerStats.SetSpeed(playerStats.GetSpeed() + _speedIncrease);
     }
 }
+
+public class GoldRateBuff : Buff
+{
+    private int _goldRateIncrease;
+
+    public GoldRateBuff(int goldRateIncrease)
+    {
+        _goldRateIncrease = goldRateIncrease;
+    }
+
+    public override void Apply(PlayerStats playerStats)
+    {
+        playerStats.SetSpeed(playerStats.GetSpeed() + _goldRateIncrease);
+    }
+}
+
+
+
 
 

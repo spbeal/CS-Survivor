@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuffManager
+public class BuffManager : MonoBehaviour
 {
 
     /* SKILLS --
      *  health
-     *  stamina
      *  move speed
-     *  exp rate
+     *  gold rate
     */
 
 
@@ -17,24 +16,35 @@ public class BuffManager
     {
         Health,
         MovementSpeed,
+        GoldRate,
     }
 
     private PlayerStats playerStats;
 
     private Buff healthBuff;
     private Buff speedBuff;
+    private Buff goldRateBuff;
 
+    void Start()
+    {
+        healthBuff = new HealthBuff(10);
+        speedBuff = new SpeedBuff(1);
+        goldRateBuff = new GoldRateBuff(1);
+    }
+
+    /*
     public BuffManager(PlayerStats stats)
     {
         playerStats = stats;
 
-        healthBuff = new Health(10);
-        speedBuff = new Speed(1);
+        healthBuff = new HealthBuff(10);
+        speedBuff = new SpeedBuff(1);
     }
+    */
 
-    public bool HasEnoughPoints(Buffs buff, int requiredPoints)
+    public bool HasEnoughPoints(Buffs buff, int requiredGold)
     {
-        return playerStats.GetGold() >= requiredPoints;
+        return playerStats.GetGold() >= requiredGold;
     }
 
     public void UpgradeBuff(Buffs buff)
@@ -53,5 +63,7 @@ public class BuffManager
         }
         Debug.Log(buff.ToString() + " upgraded!");
     }
-
 }
+
+
+
