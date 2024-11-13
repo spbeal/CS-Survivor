@@ -10,7 +10,8 @@
         "ZacAssemblyDef",
         "Lights",
         "PlayerStats",
-        "Gold"
+        "Gold",
+        "GameManagerAssemblyDef"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

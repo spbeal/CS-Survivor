@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // variables for the player stats
+    // --- variables for the player stats
+    // the maximum health for the player
     [SerializeField]
     private int _maxHealth = 100;
+    // the health that the player currently has
     [SerializeField]
     private int _currentHealth;
 
+    // the speed of the player
     [SerializeField]
     private float _speed = 10f;
 
+    // the currency that the player has to buy upgrades with
     [SerializeField]
     private int _gold = 0;
 
+    // *****Ashton please tell me what this is*****
     [SerializeField]
     private int _goldRate = 0;
 
@@ -54,7 +59,7 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    // get methods to return the value
+    // --- get methods to return the value
     public int GetMaxHealth()
     {
         return _maxHealth;
@@ -82,7 +87,7 @@ public class PlayerStats : MonoBehaviour
 
 
 
-    // set methods to change the value of the stats
+    // --- set methods to change the value of the stats
     public void SetMaxHealth(int newHealth)
     {
         _maxHealth = newHealth;
