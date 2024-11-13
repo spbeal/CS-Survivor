@@ -15,4 +15,12 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    public void SpawnSoundEffect()
+    {
+        /*
+        lightGameObject = new GameObject("SingleLight");
+        lightComp = lightGameObject.AddComponent<Light>();
+        */
+    }
 }
