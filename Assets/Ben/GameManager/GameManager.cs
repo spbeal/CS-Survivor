@@ -91,6 +91,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ActivateBcMode()
+    {
+        playerStats.SetMaxHealth(999999);
+        playerStats.SetCurrentHealth(999999);
+        playerStats.SetSpeed(30f);
+        playerStats.SetSpeed(30f);
+        playerStats.SetGold(999999);
+        playerStats.SetGoldRate(999999);
+    }
+
     // the coroutine that is called when a round ends
     IEnumerator endRound()
     {

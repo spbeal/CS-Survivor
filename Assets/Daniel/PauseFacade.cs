@@ -88,6 +88,8 @@ public class PauseFacade : MonoBehaviour
     {
         Debug.Log("starting in BC mode...");
         // I have no idea what to do here
+        // I gotchu gamer
+        gm.ActivateBcMode();
     }
 }
 
