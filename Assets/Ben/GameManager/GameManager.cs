@@ -18,11 +18,33 @@ public class GameManager : MonoBehaviour
     private GameObject isThereEnemy;
 
     // whether we are able to start another round or not
-    private bool startNextRound = false;
+    private bool startNextRound;
     // whether the round has already ended or not
-    private bool roundEnded = false;
+    private bool roundEnded;
     // used to make the lights flash at the end of the break phase after a round ends
-    private bool waitIsOver = false;
+    private bool waitIsOver;
+
+    // the instance of itself to use in order to implement the singleton pattern
+    private GameManager instance;
+
+    // the private constructor in order to make sure no other class can call the constructor
+    private GameManager()
+    {
+        startNextRound = false;
+        roundEnded = false;
+        waitIsOver = false;
+    }
+
+    // this is the function needed to be called in order to get the GameManager object in other classes (due to singleton pattern)
+    public GameManager getInstance()
+    {
+        // if there isn't already an instance of GameManager, create one
+        if(instance.instance == null){
+            instance.instance = new GameManager();
+        }
+        // send back the instance of GameManager
+        return instance.instance;
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -24,3 +24,33 @@ public class AudioManager : MonoBehaviour
         */
     }
 }
+
+// incomplete factory pattern to finish later... should be useful for spawning sound effects but I don't want to worry about whether it fits a pattern described on a website
+// so I'll be implementing it in the best way possible without worrying about the "correctness" of the pattern
+/*
+public class AudioFactory
+{
+
+}
+
+public class SoundEffect
+{
+    private GameObject soundEffect;
+
+}
+
+public class GunFiringSoundEffect : SoundEffect
+{
+
+}
+
+public class DyingSoundEffect : SoundEffect
+{
+
+}
+
+public class GettingHurtSoundEffect : SoundEffect
+{
+
+}
+*/

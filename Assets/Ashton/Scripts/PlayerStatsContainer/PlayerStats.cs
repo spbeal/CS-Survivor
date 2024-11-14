@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private int _gold = 0;
 
-    // *****Ashton please tell me what this is*****
+    // the amount of gold that each gold pickup gives you once you collect it (these spawn when enemies are destroyed)
     [SerializeField]
     private int _goldRate = 0;
 
