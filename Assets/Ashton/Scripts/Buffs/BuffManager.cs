@@ -17,6 +17,7 @@ public class BuffManager : MonoBehaviour
         Health,
         MovementSpeed,
         GoldRate,
+        Damage,
     }
 
     private PlayerStats playerStats;
@@ -24,12 +25,14 @@ public class BuffManager : MonoBehaviour
     private Buff healthBuff;
     private Buff speedBuff;
     private Buff goldRateBuff;
+    private Buff damageBuff;
 
     void Start()
     {
         healthBuff = new HealthBuff(10);
         speedBuff = new SpeedBuff(1);
         goldRateBuff = new GoldRateBuff(1);
+        damageBuff = new DamageBuff(1);
     }
 
     /*
@@ -47,15 +50,27 @@ public class BuffManager : MonoBehaviour
         return playerStats.GetGold() >= requiredGold;
     }
 
-    public void UpgradeBuff(Buffs buff)
+    public void UpgradeBuff(string buff)
     {
         switch (buff)
         {
-            case Buffs.Health:
+            case "Health":
                 healthBuff.Apply(playerStats);
                 break;
-            case Buffs.MovementSpeed:
+            case "MovementSpeed":
                 speedBuff.Apply(playerStats);
+                break;
+            case "GoldRate":
+                goldRateBuff.Apply(playerStats);
+                break;
+            case "Damage":
+                damageBuff.Apply(playerStats);
+                break;
+            case "MagSize":
+                goldRateBuff.Apply(playerStats);
+                break;
+            case "ReloadSpeed":
+                goldRateBuff.Apply(playerStats);
                 break;
             default:
                 Debug.LogError("Buff not found!");

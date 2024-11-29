@@ -17,7 +17,8 @@ public class ShopSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemPriceText;
 
-    public PlayerStats playerStats;
+    private PlayerStats playerStats;
+    private BuffManager buffManager;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class ShopSlot : MonoBehaviour
     public void Buy(GameObject button)
     {
         Debug.Log("buy_click 1");
-        if (playerStats.GetGold() >= itemPrice /*pass the price of the item somehow?*/)
+        if (playerStats.GetGold() >= 0)//itemPrice /*pass the price of the item somehow?*/)
         {
             Debug.Log("buy_click 2");
             playerStats.SetGold(playerStats.GetGold() - itemPrice);
@@ -41,26 +42,32 @@ public class ShopSlot : MonoBehaviour
             {
                 case "Buy_Booberry":
                     /* Damage++ */
-                    Debug.Log("Buy clicked -- booberry");
+                    buffManager.UpgradeBuff("Damage");
+                    Debug.Log("Buy clicked -- booberry\n>>damage = {playerStats.GetDamage()}<<");
                     break;
                 case "Buy_PC":
                     /* MagSize++ */
+                    buffManager.UpgradeBuff("MagSize");
                     Debug.Log("Buy clicked -- pc");
                     break;
                 case "Buy_VideaGames":
                     /* ReloadSpeed++ */
+                    buffManager.UpgradeBuff("RealoadSpeed");
                     Debug.Log("Buy clicked -- videagames");
                     break;
                 case "Buy_Soda":
                     /* hp++ */
+                    buffManager.UpgradeBuff("Health");
                     Debug.Log("Buy clicked -- soda");
                     break;
                 case "Buy_Aries":
                     /* speed++ */
-                    Debug.Log("Buy clicked -- aries");
+                    buffManager.UpgradeBuff("MovementSpeed");
+                    Debug.Log("Buy clicked -- aries\n>>damage = {playerStats.GetSpeed()}<<");
                     break;
                 case "Buy_C_Book":
                     /* gold_rate++ */
+                    buffManager.UpgradeBuff("GoldRate");
                     Debug.Log("Buy clicked -- c book");
                     break;
                 case "Buy_Shotgun":

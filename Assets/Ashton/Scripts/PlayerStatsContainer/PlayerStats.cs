@@ -6,23 +6,28 @@ public class PlayerStats : MonoBehaviour
 {
     // --- variables for the player stats
     // the maximum health for the player
-    [SerializeField]
-    private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth = 100;
+
     // the health that the player currently has
-    [SerializeField]
-    private int _currentHealth;
+    [SerializeField] private int _currentHealth;
 
     // the speed of the player
-    [SerializeField]
-    private float _speed = 10f;
+    [SerializeField] private float _speed = 10f;
 
     // the currency that the player has to buy upgrades with
-    [SerializeField]
-    private int _gold = 0;
+    [SerializeField] private int _gold = 0;
 
     // the amount of gold that each gold pickup gives you once you collect it (these spawn when enemies are destroyed)
-    [SerializeField]
-    private int _goldRate = 0;
+    [SerializeField] private int _goldRate = 1;
+
+    // player's damage
+    [SerializeField] private int _damage = 1;
+
+    // player's magazine size
+    [SerializeField] private int _magSize = 1;
+
+    // player's reload speed
+    [SerializeField] private int _reloadSpeed = 1;
 
     public static PlayerStats instance;
     private void Awake()
@@ -85,6 +90,21 @@ public class PlayerStats : MonoBehaviour
         return _goldRate;
     }
 
+    public int GetDamage()
+    {
+        return _damage;
+    }
+
+    public int GetMagSize()
+    {
+        return _magSize;
+    }
+
+    public int GetReloadSpeed()
+    {
+        return _reloadSpeed;
+    }
+
 
 
     // --- set methods to change the value of the stats
@@ -111,6 +131,21 @@ public class PlayerStats : MonoBehaviour
     public void SetGoldRate(int newGoldRate)
     {
         _goldRate = newGoldRate;
+    }
+
+    public void SetDamage(int newDamage)
+    {
+        _damage = newDamage;
+    }
+
+    public void SetMagSize(int newMagSize)
+    {
+        _magSize = newMagSize;
+    }
+
+    public void SetReloadSpeed(int newReloadSpeed)
+    {
+        _reloadSpeed = newReloadSpeed;
     }
 
 
