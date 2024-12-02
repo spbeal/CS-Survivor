@@ -8,6 +8,9 @@ public class GoldPickup : MonoBehaviour
     // variables
     private int _goldValue;
 
+    private PlayerStats playerStats => PlayerStats.instance;
+
+
     void Start()
     {
         _goldValue = 1;

@@ -6,28 +6,28 @@ public class PlayerStats : MonoBehaviour
 {
     // --- variables for the player stats
     // the maximum health for the player
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth;
 
     // the health that the player currently has
     [SerializeField] private int _currentHealth;
 
     // the speed of the player
-    [SerializeField] private float _speed = 10f;
+    [SerializeField] private float _speed;
 
     // the currency that the player has to buy upgrades with
-    [SerializeField] private int _gold = 0;
+    [SerializeField] private int _gold;
 
     // the amount of gold that each gold pickup gives you once you collect it (these spawn when enemies are destroyed)
-    [SerializeField] private int _goldRate = 1;
+    [SerializeField] private int _goldRate;
 
     // player's damage
-    [SerializeField] private int _damage = 1;
+    [SerializeField] private int _damage;
 
     // player's magazine size
-    [SerializeField] private int _magSize = 1;
+    [SerializeField] private int _magSize;
 
     // player's reload speed
-    [SerializeField] private int _reloadSpeed = 1;
+    [SerializeField] private int _reloadSpeed;
 
     public static PlayerStats instance;
     private void Awake()

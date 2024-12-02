@@ -1,8 +1,10 @@
 {
-    "name": "Gold",
+    "name": "Shop",
     "rootNamespace": "",
     "references": [
-        "GUID:253e1c4ed4bb15c488c32305f56f43ee"
+        "GUID:253e1c4ed4bb15c488c32305f56f43ee",
+        "GUID:a401bbd18ad46d74eab2daa3ebf5262c",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

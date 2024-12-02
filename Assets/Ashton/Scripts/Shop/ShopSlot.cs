@@ -17,8 +17,8 @@ public class ShopSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemPriceText;
 
-    private PlayerStats playerStats;
-    private BuffManager buffManager;
+    private PlayerStats playerStats => PlayerStats.instance;
+    private BuffManager buffManager => BuffManager.instance;
 
     void Start()
     {
@@ -33,17 +33,17 @@ public class ShopSlot : MonoBehaviour
 
     public void Buy(GameObject button)
     {
-        Debug.Log("buy_click 1");
-        if (playerStats.GetGold() >= 0)//itemPrice /*pass the price of the item somehow?*/)
+        //Debug.Log("buy_click 1");
+        if (playerStats.GetGold() >= itemPrice /*pass the price of the item somehow?*/)
         {
-            Debug.Log("buy_click 2");
+            //Debug.Log("buy_click 2");
             playerStats.SetGold(playerStats.GetGold() - itemPrice);
             switch (button.tag)
             {
                 case "Buy_Booberry":
                     /* Damage++ */
                     buffManager.UpgradeBuff("Damage");
-                    Debug.Log("Buy clicked -- booberry\n>>damage = {playerStats.GetDamage()}<<");
+                    Debug.Log("Buy clicked -- booberry");
                     break;
                 case "Buy_PC":
                     /* MagSize++ */
@@ -52,9 +52,9 @@ public class ShopSlot : MonoBehaviour
                     break;
                 case "Buy_VideaGames":
                     /* ReloadSpeed++ */
-                    buffManager.UpgradeBuff("RealoadSpeed");
+                    buffManager.UpgradeBuff("ReloadSpeed");
                     Debug.Log("Buy clicked -- videagames");
-                    break;
+                    break;  
                 case "Buy_Soda":
                     /* hp++ */
                     buffManager.UpgradeBuff("Health");

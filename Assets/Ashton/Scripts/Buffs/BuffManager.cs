@@ -11,6 +11,12 @@ public class BuffManager : MonoBehaviour
      *  gold rate
     */
 
+    public static BuffManager instance;
+    private void Awake()
+    {
+        Debug.Log("BuffManager Awake called");
+        instance = this;
+    }
 
     public enum Buffs
     {
@@ -20,12 +26,14 @@ public class BuffManager : MonoBehaviour
         Damage,
     }
 
-    private PlayerStats playerStats;
+    private PlayerStats playerStats => PlayerStats.instance;
 
     private Buff healthBuff;
     private Buff speedBuff;
     private Buff goldRateBuff;
     private Buff damageBuff;
+    private Buff magSizeBuff;
+    private Buff reloadSpeedBuff;
 
     void Start()
     {
@@ -33,17 +41,9 @@ public class BuffManager : MonoBehaviour
         speedBuff = new SpeedBuff(1);
         goldRateBuff = new GoldRateBuff(1);
         damageBuff = new DamageBuff(1);
+        magSizeBuff = new MagSizeBuff(1);
+        reloadSpeedBuff = new ReloadSpeedBuff(1);
     }
-
-    /*
-    public BuffManager(PlayerStats stats)
-    {
-        playerStats = stats;
-
-        healthBuff = new HealthBuff(10);
-        speedBuff = new SpeedBuff(1);
-    }
-    */
 
     public bool HasEnoughPoints(Buffs buff, int requiredGold)
     {
@@ -67,10 +67,10 @@ public class BuffManager : MonoBehaviour
                 damageBuff.Apply(playerStats);
                 break;
             case "MagSize":
-                goldRateBuff.Apply(playerStats);
+                magSizeBuff.Apply(playerStats);
                 break;
             case "ReloadSpeed":
-                goldRateBuff.Apply(playerStats);
+                reloadSpeedBuff.Apply(playerStats);
                 break;
             default:
                 Debug.LogError("Buff not found!");
@@ -79,6 +79,3 @@ public class BuffManager : MonoBehaviour
         Debug.Log(buff.ToString() + " upgraded!");
     }
 }
-
-
-
