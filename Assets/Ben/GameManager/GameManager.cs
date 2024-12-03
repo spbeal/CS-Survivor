@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         // give the player some gold for completing the round without dying
         playerStats.AddGold(100);
         // there is a 30 second break between each wave
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(25);
         // flash the lights 5 seconds before the next round starts
         waitIsOver = true;
         // 5 seconds of lights flashing

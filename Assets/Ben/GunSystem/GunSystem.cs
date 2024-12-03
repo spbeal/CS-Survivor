@@ -5,9 +5,6 @@
 public class GunSystem : MonoBehaviour
 {
     // --- Gun stats
-    // the amount of damage the gun deals to enemies when it hits them
-    [SerializeField]
-    private int damage = 10;
     // the time between each firing of the gun; the time it takes to fire the gun again after already firing it
     [SerializeField]
     private float timeBetweenShooting = 1.0f, 
@@ -17,10 +14,6 @@ public class GunSystem : MonoBehaviour
     range = 100.0f, 
     // the time it takes to fire another bullet in the same shoot cycle (we clicked fire once, but there was more than one bullet per tap)
     timeBetweenShots = 1.0f;
-    // the amoun of time it takes to reload the gun (refill the bulletsLeft with magazineSize)
-    public float reloadTime = 2.0f;
-    // the maximum amount of bullets in the gun
-    public int magazineSize = 10;
     // the amount of bullets to be fired every time the gun shoots
     public int bulletsPerTap = 1;
     // whether we should allow the user to hold down the firing button and automatically fire every time it is available to fire
@@ -47,6 +40,9 @@ public class GunSystem : MonoBehaviour
     // the layer that the enemies are on so that they can be damaged
     [SerializeField]
     private LayerMask whatIsEnemy;
+    // the object that contains all of the player data so that we can update the damage, magazine size, and reload speed
+    [SerializeField]
+    private PlayerStats playerStats;
 
     // --- Graphics
     // the muzzle flash to show when the gun fires
@@ -64,7 +60,7 @@ public class GunSystem : MonoBehaviour
 
     void Awake()
     {
-        bulletsLeft = magazineSize;
+        bulletsLeft = playerStats.GetMagSize();
         readyToShoot = true;
     }
 
@@ -96,7 +92,7 @@ public class GunSystem : MonoBehaviour
         }
 
         // checks for whether reloading has been requested and if we can currently
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < playerStats.GetMagSize() && !reloading)
         {
             Reload();
         }
@@ -129,7 +125,7 @@ public class GunSystem : MonoBehaviour
             
             if (rayHit.collider.CompareTag("Enemy"))
             {
-                rayHit.collider.gameObject.GetComponent<EnemyBehavior>().TakeDamage(damage);
+                rayHit.collider.gameObject.GetComponent<EnemyBehavior>().TakeDamage( playerStats.GetDamage() );
             }
         }
 
@@ -161,13 +157,13 @@ public class GunSystem : MonoBehaviour
     public void Reload()
     {
         reloading = true;
-        Invoke("ReloadFinished", reloadTime);
+        Invoke( "ReloadFinished", playerStats.GetReloadSpeed() );
     }
 
     // finish reloading the gun after the reloadTime timer is up
     private void ReloadFinished()
     {
-        bulletsLeft = magazineSize;
+        bulletsLeft = playerStats.GetMagSize();
         reloading = false;
     }
 }

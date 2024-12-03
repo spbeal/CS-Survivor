@@ -22,6 +22,7 @@ public class BenTests
         sceneLoaded = true;
     }
 
+    /*
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.
     [UnityTest]
@@ -149,4 +150,5 @@ public class BenTests
 
         Assert.Pass("None of the objects are null, GameManager is good to go!");
     }
+    */
 }

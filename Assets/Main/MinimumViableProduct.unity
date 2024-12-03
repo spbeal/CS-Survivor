@@ -6091,9 +6091,9 @@ MonoBehaviour:
   _speed: 10
   _gold: 0
   _goldRate: 0
-  _damage: 0
-  _magSize: 0
-  _reloadSpeed: 0
+  _damage: 20
+  _magSize: 10
+  _reloadSpeed: 2
 --- !u!1 &1114083451
 GameObject:
   m_ObjectHideFlags: 0
@@ -6625,13 +6625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ed2a26df8b02f4fb6a51852e427d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   timeBetweenShooting: 0.1
   spread: 0.01
   range: 50
   timeBetweenShots: 0.5
-  reloadTime: 1
-  magazineSize: 10
   bulletsPerTap: 1
   allowButtonHold: 1
   bulletsLeft: 0
@@ -6640,6 +6637,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8
+  playerStats: {fileID: 1107969149}
   muzzleFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   checkForGunFiringOnOrOff: 0
 --- !u!64 &1156439513

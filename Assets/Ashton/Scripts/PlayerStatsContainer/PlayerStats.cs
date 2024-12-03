@@ -24,14 +24,14 @@ public class PlayerStats : MonoBehaviour
     // the amount of gold that each gold pickup gives you once you collect it (these spawn when enemies are destroyed)
     [SerializeField] private int _goldRate;
 
-    // player's damage
-    [SerializeField] private int _damage;
+    // the amount of damage the gun deals to enemies when it hits them
+    [SerializeField] private int _damage = 20;
 
-    // player's magazine size
-    [SerializeField] private int _magSize;
+    // the maximum amount of bullets the gun can fire before needing to reload
+    [SerializeField] private int _magSize = 10;
 
-    // player's reload speed
-    [SerializeField] private int _reloadSpeed;
+    // the amoun of time it takes to reload the gun (refill the bulletsLeft with magazineSize (in GunSystem.cs))
+    [SerializeField] private float _reloadSpeed = 2.0f;
 
     public static PlayerStats instance;
     private void Awake()
@@ -106,7 +106,7 @@ public class PlayerStats : MonoBehaviour
         return _magSize;
     }
 
-    public int GetReloadSpeed()
+    public float GetReloadSpeed()
     {
         return _reloadSpeed;
     }
@@ -149,7 +149,7 @@ public class PlayerStats : MonoBehaviour
         _magSize = newMagSize;
     }
 
-    public void SetReloadSpeed(int newReloadSpeed)
+    public void SetReloadSpeed(float newReloadSpeed)
     {
         _reloadSpeed = newReloadSpeed;
     }

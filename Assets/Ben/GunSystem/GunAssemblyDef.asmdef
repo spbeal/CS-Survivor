@@ -2,7 +2,8 @@
     "name": "GunAssemblyDef",
     "rootNamespace": "",
     "references": [
-        "GUID:08c689b9cc68133439741fdb5c0f2fc9"
+        "GUID:08c689b9cc68133439741fdb5c0f2fc9",
+        "GUID:253e1c4ed4bb15c488c32305f56f43ee"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
