@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    // to activate the loss screen on death
+    [SerializeField]
+    private GameObject lossMenu;
+
     // --- variables for the player stats
     // the maximum health for the player
     [SerializeField] private int _maxHealth;
@@ -58,6 +62,8 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Player has died!");
         // display the death screen here with the button that will call the Game Manager's RestartGame function
+        Debug.Log("lossMenu: " + lossMenu);
+        lossMenu.SetActive(true);
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

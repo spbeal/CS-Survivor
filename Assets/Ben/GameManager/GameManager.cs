@@ -159,6 +159,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /* Just in case assembly defs keep not working and if I need a backup way to solve it
+    public bool CheckIfDie()
+    {
+        int health = playerStats.GetCurrentHealth();
+        if(health <= 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    */
+
     // scrapped coroutine to flash the lights, left this here just in case the code was useful later
     /*
     IEnumerator flashLights()

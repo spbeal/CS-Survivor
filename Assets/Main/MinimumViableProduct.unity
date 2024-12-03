@@ -6085,6 +6085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ccc74e57234b4e836b5bf31bf1dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lossMenu: {fileID: 402940099}
   _maxHealth: 100
   _currentHealth: 0
   _speed: 10
@@ -7097,6 +7098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ccc74e57234b4e836b5bf31bf1dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lossMenu: {fileID: 0}
   _maxHealth: 100
   _currentHealth: 100
   _speed: 10
