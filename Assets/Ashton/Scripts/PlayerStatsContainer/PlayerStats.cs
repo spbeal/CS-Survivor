@@ -10,10 +10,10 @@ public class PlayerStats : MonoBehaviour
 
     // --- variables for the player stats
     // the maximum health for the player
-    [SerializeField] private int _maxHealth;
+    [SerializeField] private float _maxHealth;
 
     // the health that the player currently has
-    [SerializeField] private int _currentHealth;
+    [SerializeField] private float _currentHealth;
 
     // the speed of the player
     [SerializeField] private float _speed;
@@ -71,12 +71,12 @@ public class PlayerStats : MonoBehaviour
 
 
     // --- get methods to return the value
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return _maxHealth;
     }
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
         return _currentHealth;
     }
@@ -114,12 +114,12 @@ public class PlayerStats : MonoBehaviour
 
 
     // --- set methods to change the value of the stats
-    public void SetMaxHealth(int newHealth)
+    public void SetMaxHealth(float newHealth)
     {
         _maxHealth = newHealth;
     }
 
-    public void SetCurrentHealth(int newHealth)
+    public void SetCurrentHealth(float newHealth)
     {
         _currentHealth = newHealth;
     }
