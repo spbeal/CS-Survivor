@@ -153,6 +153,7 @@ public class EnemyBehavior : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+        GoldController.instance.SpawnGold(transform.position);
     }
 }
 

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
     // to activate the loss screen on death
     [SerializeField]
     private GameObject lossMenu;
+
+    [SerializeField] private TextMeshProUGUI goldText;
 
     // --- variables for the player stats
     // the maximum health for the player
@@ -38,6 +42,11 @@ public class PlayerStats : MonoBehaviour
     {
         instance = this;
         _currentHealth = _maxHealth; // Initialize health
+    }
+
+    public void Update()
+    {
+        goldText.text = _gold.ToString();
     }
 
     // makes the player take the given damage and checks if that makes them go into negative values of health (meaning they should die and the game should end)

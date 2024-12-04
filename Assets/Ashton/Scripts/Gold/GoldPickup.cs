@@ -22,7 +22,7 @@ public class GoldPickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GoldController.instance.GetGold(_goldValue);
+            playerStats.AddGold(playerStats.GetGoldRate());
 
             Destroy(gameObject);
         }

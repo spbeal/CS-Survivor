@@ -2,7 +2,8 @@
     "name": "ZacAssemblyDef",
     "rootNamespace": "",
     "references": [
-        "GUID:253e1c4ed4bb15c488c32305f56f43ee"
+        "GUID:253e1c4ed4bb15c488c32305f56f43ee",
+        "GUID:c1c029bda08442c4fb161ff8e95d11e0"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
