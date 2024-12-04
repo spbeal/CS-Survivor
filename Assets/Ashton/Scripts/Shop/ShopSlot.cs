@@ -63,7 +63,7 @@ public class ShopSlot : MonoBehaviour
                 case "Buy_Aries":
                     /* speed++ */
                     buffManager.UpgradeBuff("MovementSpeed");
-                    Debug.Log("Buy clicked -- aries\n>>damage = {playerStats.GetSpeed()}<<");
+                    Debug.Log("Buy clicked -- aries");
                     break;
                 case "Buy_C_Book":
                     /* gold_rate++ */

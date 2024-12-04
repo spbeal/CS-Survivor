@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
 // needs shot effect from unity particle pack
 
@@ -58,8 +59,12 @@ public class GunSystem : MonoBehaviour
     [SerializeField]
     private bool checkForGunFiringOnOrOff = false;
 
+    // create singelton instance to reference the class
+    public static GunSystem instance;
+
     void Awake()
     {
+        instance = this;
         bulletsLeft = playerStats.GetMagSize();
         readyToShoot = true;
     }

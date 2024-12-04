@@ -2,7 +2,9 @@
     "name": "HUD",
     "rootNamespace": "",
     "references": [
-        "GUID:253e1c4ed4bb15c488c32305f56f43ee"
+        "GUID:253e1c4ed4bb15c488c32305f56f43ee",
+        "GUID:e3f9673d37239f44f9cfde434544bf4c",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

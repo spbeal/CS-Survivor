@@ -21,7 +21,7 @@ public class GoldController : MonoBehaviour
             // instantiate gold pickup
             GoldPickup spawnedGold = Instantiate(pickup, position + new Vector3((Random.value - 0.5f) * 2, (Random.value - 0.5f) * 2, (Random.value - 0.5f) * 2), Quaternion.identity) as GoldPickup;
             // set a despawn timer to that instantiation
-            Destroy(spawnedGold, 8f);
+            //Destroy(spawnedGold, 8f);
         }
 
     }

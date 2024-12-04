@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
-
     private PlayerStats playerStats => PlayerStats.instance;
-    public Image healthBar;
+    private GunSystem gunSystem => GunSystem.instance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image healthBar;
+    [SerializeField] private TextMeshProUGUI ammoCount;
+    [SerializeField] private TextMeshProUGUI goldText;
 
-    // Update is called once per frame
     void Update()
     {
         healthBar.fillAmount = Mathf.Clamp(playerStats.GetCurrentHealth() / playerStats.GetMaxHealth(), 0, 1);
+        goldText.text = playerStats.GetGold().ToString();
+        ammoCount.text = gunSystem.bulletsLeft.ToString() + " / " + playerStats.GetMagSize().ToString();
     }
 }
