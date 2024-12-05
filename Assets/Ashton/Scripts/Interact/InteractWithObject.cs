@@ -11,6 +11,20 @@ public class InteractWithObject : MonoBehaviour
     [SerializeField] private GameObject WeaponShopMenuObject;
     [SerializeField] private GameObject BuffShopMenuObject;
 
+    // used to play audio for wilder voice clips
+    [SerializeField]
+    private AudioSource wilderVoice;
+    // used to play audio for dr.BC voice clips
+    [SerializeField]
+    private AudioSource bcVoice;
+    // used to play audio for bolden voice clips
+    [SerializeField]
+    private AudioSource boldenVoice;
+
+    // audio clips for wilder
+    [SerializeField]
+    private AudioClip hello1Wilder;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
