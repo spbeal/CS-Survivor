@@ -86,16 +86,16 @@ public class MagSizeBuff : Buff
 
 public class ReloadSpeedBuff : Buff
 {
-    private int _reloadSpeedIncrease;
+    private float _reloadTimeDecrease;
 
-    public ReloadSpeedBuff(int reloadSpeedIncrease)
+    public ReloadSpeedBuff(float reloadTimeDecrease)
     {
-        _reloadSpeedIncrease = reloadSpeedIncrease;
+        _reloadTimeDecrease = reloadTimeDecrease;
     }
 
     public override void Apply(PlayerStats playerStats)
     {
-        playerStats.SetReloadSpeed(playerStats.GetReloadSpeed() + _reloadSpeedIncrease);
+        playerStats.SetReloadSpeed(playerStats.GetReloadSpeed() * _reloadTimeDecrease);
     }
 }
 

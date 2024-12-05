@@ -42,7 +42,7 @@ public class BuffManager : MonoBehaviour
         goldRateBuff = new GoldRateBuff(1);
         damageBuff = new DamageBuff(1);
         magSizeBuff = new MagSizeBuff(1);
-        reloadSpeedBuff = new ReloadSpeedBuff(1);
+        reloadSpeedBuff = new ReloadSpeedBuff(0.5f);
     }
 
     public bool HasEnoughPoints(Buffs buff, int requiredGold)
