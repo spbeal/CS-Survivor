@@ -10,11 +10,11 @@ public class GunSystem : MonoBehaviour
     [SerializeField]
     private float timeBetweenShooting = 1.0f, 
     // the amount of spread for each bullet the gun should have
-    spread = 0.1f, 
+    spread = 0.01f, 
     // the range that the bullets can reach (anything after this distance can't be hit)
     range = 100.0f, 
     // the time it takes to fire another bullet in the same shoot cycle (we clicked fire once, but there was more than one bullet per tap)
-    timeBetweenShots = 1.0f;
+    timeBetweenShots = 0.5f;
     // the amount of bullets to be fired every time the gun shoots
     public int bulletsPerTap = 1;
     // whether we should allow the user to hold down the firing button and automatically fire every time it is available to fire
@@ -44,6 +44,9 @@ public class GunSystem : MonoBehaviour
     // the object that contains all of the player data so that we can update the damage, magazine size, and reload speed
     [SerializeField]
     private PlayerStats playerStats;
+    // the audio object that we use to play the gun firing sound
+    [SerializeField]
+    private AudioSource gunAudio;
 
     // --- Graphics
     // the muzzle flash to show when the gun fires
@@ -136,6 +139,9 @@ public class GunSystem : MonoBehaviour
 
         // create the muzzle flash for the gun firing
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+
+        // activate the gun firing sound
+        gunAudio.Play();
 
         // reduce the amount of bullets left in the magazine by one
         bulletsLeft--;
