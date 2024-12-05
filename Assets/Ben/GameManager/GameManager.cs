@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
             SpawnEnemies();
             // Move to the next round
             currentRound++;
+        }else if(currentRound > maxRounds){
+            
         }
 
         // check if there is an enemy in the scene
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour
     IEnumerator endRound()
     {
         // give the player some gold for completing the round without dying
-        playerStats.AddGold(100);
+        playerStats.AddGold(20);
         // there is a 30 second break between each wave
         yield return new WaitForSeconds(25);
         // flash the lights 5 seconds before the next round starts
