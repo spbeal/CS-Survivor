@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     // object to fill if there is an enemy currently present in the scene
     private GameObject isThereEnemy;
 
+    // object to fill with the win menu so that we can turn it on or off
+    [SerializeField] // needs to be filled by drag and drop in the unity menu because doing it by code is real sketchy for some reason
+    private GameObject winMenu;
+
     // whether we are able to start another round or not
     private bool startNextRound;
     // whether the round has already ended or not
@@ -89,8 +93,11 @@ public class GameManager : MonoBehaviour
             SpawnEnemies();
             // Move to the next round
             currentRound++;
-        }else if(currentRound > maxRounds){
-            
+        }else if(currentRound > maxRounds){ // this is here for catching any cases where the currentRound becomes greater than the maxRounds and wasn't already caught by the equals check when the round ends
+            winMenu.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         // check if there is an enemy in the scene
@@ -100,6 +107,13 @@ public class GameManager : MonoBehaviour
         if( isThereEnemy == null && Time.time > 5 && !roundEnded ){
             Debug.Log("round has ended");
             roundEnded = true;
+            // if we are going to be over the max rounds after this waiting period, just end the game then and there since there's no wave afterwards anyway
+            if(currentRound == maxRounds){
+                winMenu.SetActive(true);
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
             StartCoroutine( endRound() );
         }
 
