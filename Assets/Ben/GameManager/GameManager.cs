@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int enemiesPerRound = 3; // Number of enemies to spawn per round
 
+    // for playing the terry voice clip when you die
+    [SerializeField] private AudioSource voiceClipPlayer;
+    [SerializeField] private AudioClip terryVoiceClipWin;
+
     // the private constructor in order to make sure no other class can call the constructor
     private GameManager()
     {
@@ -94,6 +98,7 @@ public class GameManager : MonoBehaviour
             // Move to the next round
             currentRound++;
         }else if(currentRound > maxRounds){ // this is here for catching any cases where the currentRound becomes greater than the maxRounds and wasn't already caught by the equals check when the round ends
+            voiceClipPlayer.PlayOneShot(terryVoiceClipWin, 0.6f);
             winMenu.SetActive(true);
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
@@ -109,6 +114,7 @@ public class GameManager : MonoBehaviour
             roundEnded = true;
             // if we are going to be over the max rounds after this waiting period, just end the game then and there since there's no wave afterwards anyway
             if(currentRound == maxRounds){
+                voiceClipPlayer.PlayOneShot(terryVoiceClipWin, 0.6f);
                 winMenu.SetActive(true);
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;

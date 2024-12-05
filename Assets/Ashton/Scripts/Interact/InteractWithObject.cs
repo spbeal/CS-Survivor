@@ -21,9 +21,13 @@ public class InteractWithObject : MonoBehaviour
     [SerializeField]
     private AudioSource boldenVoice;
 
+    private bool turnedOnWilder = false;
+
     // audio clips for wilder
     [SerializeField]
     private AudioClip hello1Wilder;
+    [SerializeField]
+    private AudioClip bye1Wilder;
 
     private void Start()
     {
@@ -39,6 +43,13 @@ public class InteractWithObject : MonoBehaviour
                 Interact();
             }
         }
+
+        if(UpgradeShopMenuObject.activeSelf){
+            turnedOnWilder = true;
+        }else if(turnedOnWilder && !UpgradeShopMenuObject.activeSelf){
+            wilderVoice.PlayOneShot(bye1Wilder, 0.7f);
+            turnedOnWilder = false;
+        }
     }
 
     private void Interact()
@@ -47,6 +58,10 @@ public class InteractWithObject : MonoBehaviour
         Debug.Log("Interacted with " + gameObject.name);
         if (gameObject.name == "UpgradeShopCollider")
         {
+            // play the hello voice clip when first interacting with Wilder
+            if(!UpgradeShopMenuObject.activeSelf){
+                wilderVoice.PlayOneShot(hello1Wilder, 0.9f);
+            }
             PauseGame(UpgradeShopMenuObject);
         }
         else if (gameObject.name == "WeaponShopCollider")

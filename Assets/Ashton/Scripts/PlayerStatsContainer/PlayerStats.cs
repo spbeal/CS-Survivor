@@ -34,8 +34,12 @@ public class PlayerStats : MonoBehaviour
     // the maximum amount of bullets the gun can fire before needing to reload
     [SerializeField] private int _magSize = 10;
 
-    // the amoun of time it takes to reload the gun (refill the bulletsLeft with magazineSize (in GunSystem.cs))
+    // the amount of time it takes to reload the gun (refill the bulletsLeft with magazineSize (in GunSystem.cs))
     [SerializeField] private float _reloadSpeed = 2.0f;
+
+    // for playing the terry voice clip when you die
+    [SerializeField] private AudioSource voiceClipPlayer;
+    [SerializeField] private AudioClip terryVoiceClipLoss;
 
     public static PlayerStats instance;
     private void Awake()
@@ -70,7 +74,8 @@ public class PlayerStats : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player has died!");
-        // display the death screen here with the button that will call the Game Manager's RestartGame function
+        voiceClipPlayer.PlayOneShot(terryVoiceClipLoss, 0.6f);
+        // display the loss menu
         Debug.Log("lossMenu: " + lossMenu);
         lossMenu.SetActive(true);
         Time.timeScale = 0;
