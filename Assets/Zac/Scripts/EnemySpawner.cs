@@ -7,10 +7,6 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints; // Array to hold spawn points
     private EnemyFactory enemyFactory; // Reference to the enemy factory
 
-    public int currentRound = 1; // Start at round 1
-    private int maxRounds = 5; // Limit to 5 rounds
-    public int enemiesPerRound = 3; // Number of enemies to spawn per round *NOTE* This should probably be private but is public for the sake of testing*
-
     private void Start()
     {
         // Initialize the enemy factory

@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
     // the instance of itself to use in order to implement the singleton pattern
     private GameManager instance;
 
+    [SerializeField]
+    private int currentRound = 1; // Stores the number of the current round (Start at round 1)
+    [SerializeField]
+    private int maxRounds = 5; // Limits the game to 5 rounds
+    [SerializeField]
+    private int enemiesPerRound = 3; // Number of enemies to spawn per round
+
     // the private constructor in order to make sure no other class can call the constructor
     private GameManager()
     {
@@ -69,21 +76,19 @@ public class GameManager : MonoBehaviour
 
         // spawn a wave of enemies
         SpawnEnemies();
-        // Move to the next round
-        enemySpawner.currentRound++; 
     }
 
     // Update is called once per frame
     void Update()
     {
         // if we should start another round, then spawn another wave of enemies
-        if(startNextRound){
+        if(startNextRound && currentRound <= maxRounds){
             // make sure we don't immediatly start another round again
             startNextRound = false;
             // spawn a wave of enemies
             SpawnEnemies();
             // Move to the next round
-            enemySpawner.currentRound++;
+            currentRound++;
         }
 
         // check if there is an enemy in the scene
@@ -121,6 +126,9 @@ public class GameManager : MonoBehaviour
         playerStats.SetSpeed(30f);
         playerStats.SetGold(999999);
         playerStats.SetGoldRate(999999);
+        playerStats.SetDamage(99999);
+        playerStats.SetMagSize(99999);
+        playerStats.SetReloadSpeed(0.0f);
     }
 
     // the coroutine that is called when a round ends
@@ -146,15 +154,14 @@ public class GameManager : MonoBehaviour
     // spawns a wave of enemies using the enemySpawner object
     private void SpawnEnemies()
     {
-        // put this into a variable with a much smaller name
-        int round = enemySpawner.currentRound;
+        Debug.Log($"Starting round {currentRound}");
 
-        Debug.Log($"Starting round {round}");
+        int enemiesToSpawn = enemiesPerRound * currentRound;
 
         // add the correct amount of enemies and enemy types for the wave
-        for (int i = 0; i < enemySpawner.enemiesPerRound; i++)
+        for (int i = 0; i < enemiesToSpawn; i++)
         {
-            string enemyType = enemySpawner.GetWeightedEnemyType(round); // Get the enemy type based on the current round
+            string enemyType = enemySpawner.GetWeightedEnemyType(currentRound); // Get the enemy type based on the current round
             enemySpawner.SpawnEnemy(enemyType);
         }
     }
