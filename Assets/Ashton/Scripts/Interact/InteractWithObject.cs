@@ -47,7 +47,7 @@ public class InteractWithObject : MonoBehaviour
         if(UpgradeShopMenuObject.activeSelf){
             turnedOnWilder = true;
         }else if(turnedOnWilder && !UpgradeShopMenuObject.activeSelf){
-            wilderVoice.PlayOneShot(bye1Wilder, 0.7f);
+            wilderVoice.PlayOneShot(bye1Wilder, 0.6f);
             turnedOnWilder = false;
         }
     }
@@ -60,7 +60,7 @@ public class InteractWithObject : MonoBehaviour
         {
             // play the hello voice clip when first interacting with Wilder
             if(!UpgradeShopMenuObject.activeSelf){
-                wilderVoice.PlayOneShot(hello1Wilder, 0.9f);
+                wilderVoice.PlayOneShot(hello1Wilder, 1.3f);
             }
             PauseGame(UpgradeShopMenuObject);
         }
